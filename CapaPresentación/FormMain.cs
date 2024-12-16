@@ -1,5 +1,4 @@
-﻿using Entidades;
-using GestionAgenda;
+﻿using GestionAgenda;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,9 +29,7 @@ namespace CapaPresentación
 
         private void btnTelefonosContacto_Click(object sender, EventArgs e)
         {
-            int id = Int32.Parse(txtIdContacto.Text.ToString());
-            var person = gestion.ContactoById(id);
-            dgvContactos.DataSource = new List<Contacto> { person };
+
         }
     }
 }

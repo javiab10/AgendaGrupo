@@ -28,11 +28,6 @@ namespace GestionAgenda
 
         }
 
-        public Contacto ContactoById(int identificador)
-        {
-            Contacto contacto = agendaEntities.Contactos.Find(identificador);
-            return contacto;
-        }
-
+       
     }
 }
