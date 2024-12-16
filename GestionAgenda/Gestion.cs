@@ -1,4 +1,5 @@
-﻿using Servidores;
+﻿using Entidades;
+using Servidores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,5 +27,12 @@ namespace GestionAgenda
 
 
         }
+
+        public Contacto ContactoById(int identificador)
+        {
+            Contacto contacto = agendaEntities.Contactos.Find(identificador);
+            return contacto;
+        }
+
     }
 }

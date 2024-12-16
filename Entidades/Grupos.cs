@@ -19,7 +19,16 @@ namespace Entidades
         {
             this.Contactos = new HashSet<Contacto>();
         }
-    
+
+        //Edit cris
+        public Grupos(int idGrupo, string nombreGrupo)
+        {
+            this.IdGrupo = idGrupo;
+            this.NombreGrupo = nombreGrupo;
+            this.Contactos = new HashSet<Contacto>();
+        }
+
+
         public int IdGrupo { get; set; }
         public string NombreGrupo { get; set; }
     
