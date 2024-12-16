@@ -5,21 +5,25 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CapaPresentacion
+namespace CapaPresentación
 {
     internal static class Program
     {
 
+        public static Gestion gestion = new Gestion();
+
         /// <summary>
         /// Punto de entrada principal para la aplicación.
         /// </summary>
-        public static Gestion gestion = new Gestion();
         [STAThread]
+
+
         static void Main()
         {
+            Gestion gestion = new Gestion();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmConsultas());
+            Application.Run(new FormMain(gestion));
         }
     }
 }

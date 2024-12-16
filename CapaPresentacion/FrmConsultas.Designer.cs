@@ -67,7 +67,6 @@
             this.btnTelefonosContacto.TabIndex = 5;
             this.btnTelefonosContacto.Text = "Teléfonos de contacto";
             this.btnTelefonosContacto.UseVisualStyleBackColor = true;
-            this.btnTelefonosContacto.Click += new System.EventHandler(this.btnTelefonosContacto_Click);
             // 
             // txtIdContacto
             // 
@@ -94,7 +93,6 @@
             this.btnTodosContactos.TabIndex = 10;
             this.btnTodosContactos.Text = "Todos los contactos";
             this.btnTodosContactos.UseVisualStyleBackColor = true;
-            this.btnTodosContactos.Click += new System.EventHandler(this.btnTodosContactos_Click);
             // 
             // btnContactosTelefono
             // 
@@ -104,7 +102,6 @@
             this.btnContactosTelefono.TabIndex = 11;
             this.btnContactosTelefono.Text = "Contactos de un teléfono";
             this.btnContactosTelefono.UseVisualStyleBackColor = true;
-            this.btnContactosTelefono.Click += new System.EventHandler(this.btnContactosTelefono_Click);
             // 
             // txtNumeroTelefono
             // 
@@ -123,7 +120,6 @@
             this.btnAltaContactos.TabIndex = 13;
             this.btnAltaContactos.Text = "Alta de contactos";
             this.btnAltaContactos.UseVisualStyleBackColor = true;
-            this.btnAltaContactos.Click += new System.EventHandler(this.btnAltaContactos_Click);
             // 
             // FrmConsultas
             // 
@@ -144,7 +140,6 @@
             this.Name = "FrmConsultas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consultas";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvContactos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTelefonosContacto)).EndInit();
             this.ResumeLayout(false);
