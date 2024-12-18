@@ -3,6 +3,7 @@ using Servidores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -34,6 +35,37 @@ namespace GestionAgenda
        public List<Contacto> DevolverTodosLosContactos()
         {
             return agendaEntities.Contactos.ToList();
+        }
+
+        public string AgregarGrupo(string nombreGrupo)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(nombreGrupo))
+                {
+                    return "El nombre del grupo no puede estar vacío.";
+                }
+
+                bool existeGrupo = agendaEntities.Grupos.Any(g => g.NombreGrupo == nombreGrupo);
+
+                if (existeGrupo)
+                {
+                    return $"El grupo '{nombreGrupo}' ya existe.";
+                }
+
+                Grupos nuevoGrupo = new Grupos
+                {
+                    NombreGrupo = nombreGrupo
+                };
+
+                agendaEntities.Grupos.Add(nuevoGrupo);
+
+                return $"Grupo '{nombreGrupo}' añadido correctamente.";
+            }
+            catch (Exception ex)
+            {
+                return $"Error al agregar el grupo: {ex.Message}";
+            }
         }
     }
 }
