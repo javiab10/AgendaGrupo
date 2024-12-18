@@ -1,6 +1,6 @@
 ﻿namespace CapaPresentación
 {
-    partial class AnadirTelefonoContacto
+    partial class FrmAnadirTelefonoContacto
     {
         /// <summary>
         /// Required designer variable.
@@ -30,10 +30,10 @@
         {
             this.cmbContactos = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtTelefono = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.btnCrear = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -55,12 +55,12 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Selecciona Contacto";
             // 
-            // textBox1
+            // txtTelefono
             // 
-            this.textBox1.Location = new System.Drawing.Point(151, 83);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(149, 20);
-            this.textBox1.TabIndex = 2;
+            this.txtTelefono.Location = new System.Drawing.Point(151, 83);
+            this.txtTelefono.Name = "txtTelefono";
+            this.txtTelefono.Size = new System.Drawing.Size(149, 20);
+            this.txtTelefono.TabIndex = 2;
             // 
             // label2
             // 
@@ -80,12 +80,12 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "DESCRIPCION:";
             // 
-            // textBox2
+            // txtDescripcion
             // 
-            this.textBox2.Location = new System.Drawing.Point(151, 139);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(149, 20);
-            this.textBox2.TabIndex = 5;
+            this.txtDescripcion.Location = new System.Drawing.Point(151, 139);
+            this.txtDescripcion.Name = "txtDescripcion";
+            this.txtDescripcion.Size = new System.Drawing.Size(149, 20);
+            this.txtDescripcion.TabIndex = 5;
             // 
             // btnCrear
             // 
@@ -95,20 +95,21 @@
             this.btnCrear.TabIndex = 6;
             this.btnCrear.Text = "CrearTelefono";
             this.btnCrear.UseVisualStyleBackColor = true;
+            this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
             // 
-            // AnadirTelefonoContacto
+            // FrmAnadirTelefonoContacto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(374, 367);
             this.Controls.Add(this.btnCrear);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtTelefono);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmbContactos);
-            this.Name = "AnadirTelefonoContacto";
+            this.Name = "FrmAnadirTelefonoContacto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.AnadirTelefonoContacto_Load);
@@ -121,10 +122,10 @@
 
         private System.Windows.Forms.ComboBox cmbContactos;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtDescripcion;
         private System.Windows.Forms.Button btnCrear;
     }
 }
