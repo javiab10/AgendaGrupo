@@ -54,15 +54,15 @@ namespace Servidores
                 error = true;
             }
 
-            if (!corregidoList.Contains("LAPTOP-BCBR8QSP\\SQLEXPRESS", StringComparer.OrdinalIgnoreCase))
+            if (!corregidoList.Contains("LAPTOP-BCBR8QSP*LAPTOP-BCBR8QSP\\SQLEXPRESS", StringComparer.OrdinalIgnoreCase))
             {
-                corregidoList.Add("LAPTOP-BCBR8QSP\\SQLEXPRESS");
+                corregidoList.Add("LAPTOP-BCBR8QSP*LAPTOP-BCBR8QSP\\SQLEXPRESS");
                 error = true;
             }
 
-            if (!corregidoList.Contains("DESKTOP-OM1M5LR\\SQLEXPRESS", StringComparer.OrdinalIgnoreCase))
+            if (!corregidoList.Contains("DESKTOP-OM1M5LR*DESKTOP-OM1M5LR\\SQLEXPRESS", StringComparer.OrdinalIgnoreCase))
             {
-                corregidoList.Add("DESKTOP-OM1M5LR\\SQLEXPRESS");
+                corregidoList.Add("DESKTOP-OM1M5LR*DESKTOP-OM1M5LR\\SQLEXPRESS");
                 error = true;
             }
 
