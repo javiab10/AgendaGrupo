@@ -53,25 +53,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AnadirTelefonoContacto.cs">
+    <Compile Include="FrmAnadirTelefonoContacto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AnadirTelefonoContacto.Designer.cs">
-      <DependentUpon>AnadirTelefonoContacto.cs</DependentUpon>
+    <Compile Include="FrmAnadirTelefonoContacto.Designer.cs">
+      <DependentUpon>FrmAnadirTelefonoContacto.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMain.cs">
+    <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMain.Designer.cs">
-      <DependentUpon>FormMain.cs</DependentUpon>
+    <Compile Include="FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AnadirTelefonoContacto.resx">
-      <DependentUpon>AnadirTelefonoContacto.cs</DependentUpon>
+    <EmbeddedResource Include="FrmAnadirTelefonoContacto.resx">
+      <DependentUpon>FrmAnadirTelefonoContacto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMain.resx">
-      <DependentUpon>FormMain.cs</DependentUpon>
+    <EmbeddedResource Include="FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

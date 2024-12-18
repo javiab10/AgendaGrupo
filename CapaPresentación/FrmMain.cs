@@ -12,11 +12,11 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace CapaPresentación
 {
-    public partial class FormMain : Form
+    public partial class FrmMain : Form
     {
 
         Gestion gestion;
-        public FormMain(Gestion gestion)
+        public FrmMain(Gestion gestion)
         {
             this.gestion = gestion;
             InitializeComponent();
@@ -34,7 +34,7 @@ namespace CapaPresentación
 
         private void agregarTelefonoAContactoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AnadirTelefonoContacto form = new AnadirTelefonoContacto(gestion);
+            FrmAnadirTelefonoContacto form = new FrmAnadirTelefonoContacto(gestion);
             form.ShowDialog();
         }
     }

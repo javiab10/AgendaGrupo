@@ -75,5 +75,10 @@ namespace GestionAgenda
                 return $"Error al agregar el grupo: {ex.Message}";
             }
         }
+
+        public void AnadirTelefonoAContacto(string text1, string text2, Contacto test, out string errores)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
