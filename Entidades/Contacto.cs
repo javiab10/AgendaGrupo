@@ -28,5 +28,10 @@ namespace Entidades
         public virtual Grupos Grupos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Telefono> Telefonos { get; set; }
+
+        //public override string ToString()
+        //{
+        //    return Email;
+        //}
     }
 }
