@@ -59,6 +59,12 @@
     <Compile Include="FrmAnadirTelefonoContacto.Designer.cs">
       <DependentUpon>FrmAnadirTelefonoContacto.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmDarAltaGrupo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDarAltaGrupo.Designer.cs">
+      <DependentUpon>FrmDarAltaGrupo.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +75,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmAnadirTelefonoContacto.resx">
       <DependentUpon>FrmAnadirTelefonoContacto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDarAltaGrupo.resx">
+      <DependentUpon>FrmDarAltaGrupo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
