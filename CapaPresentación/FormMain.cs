@@ -31,5 +31,11 @@ namespace CapaPresentación
         {
 
         }
+
+        private void agregarTelefonoAContactoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AnadirTelefonoContacto form = new AnadirTelefonoContacto(gestion);
+            form.ShowDialog();
+        }
     }
 }

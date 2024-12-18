@@ -146,6 +146,7 @@
             this.agregarTelefonoAContactoToolStripMenuItem.Name = "agregarTelefonoAContactoToolStripMenuItem";
             this.agregarTelefonoAContactoToolStripMenuItem.Size = new System.Drawing.Size(227, 22);
             this.agregarTelefonoAContactoToolStripMenuItem.Text = "Agregar Telefono A Contacto";
+            this.agregarTelefonoAContactoToolStripMenuItem.Click += new System.EventHandler(this.agregarTelefonoAContactoToolStripMenuItem_Click);
             // 
             // FormMain
             // 

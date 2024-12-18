@@ -10,7 +10,7 @@ namespace CapaPresentación
     internal static class Program
     {
 
-        public static Gestion gestion = new Gestion();
+        public static Gestion gestion;
 
         /// <summary>
         /// Punto de entrada principal para la aplicación.
@@ -20,10 +20,21 @@ namespace CapaPresentación
 
         static void Main()
         {
-            Gestion gestion = new Gestion();
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMain(gestion));
+            gestion = new Gestion(out string errores);
+
+
+
+            if (errores == "" )
+            {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new FormMain(gestion));
+            }
+            else
+            {
+                MessageBox.Show(errores);
+            }
+
         }
     }
 }
