@@ -18,7 +18,9 @@ namespace CapaPresentación
             InitializeComponent();
         }
 
-        private void btnDarDeAltaGrupo_Click(object sender, EventArgs e)
+     
+
+        private void btnDarAltaGrupo_Click(object sender, EventArgs e)
         {
             Gestion repo = new Gestion(out string error);
             if (error == "")
@@ -30,7 +32,6 @@ namespace CapaPresentación
             {
                 Console.WriteLine(error);
             }
-
         }
     }
 }
