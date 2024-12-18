@@ -12,11 +12,11 @@ using System.Windows.Forms;
 
 namespace CapaPresentación
 {
-    public partial class AnadirTelefonoContacto : Form
+    public partial class FrmAnadirTelefonoContacto : Form
     {
 
         Gestion gestion;
-        public AnadirTelefonoContacto(Gestion gestion)
+        public FrmAnadirTelefonoContacto(Gestion gestion)
         {
             this.gestion = gestion;
             InitializeComponent();
@@ -33,6 +33,12 @@ namespace CapaPresentación
         private void cmbContactos_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnCrear_Click(object sender, EventArgs e)
+        {
+            Contacto test = cmbContactos.SelectedItem as Contacto;
+            gestion.AnadirTelefonoAContacto(txtTelefono.Text, txtDescripcion.Text, test,out string errores);
         }
     }
 }
