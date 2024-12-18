@@ -37,5 +37,13 @@ namespace CapaPresentación
             AnadirTelefonoContacto form = new AnadirTelefonoContacto(gestion);
             form.ShowDialog();
         }
+
+        private void btnTodosContactos_Click(object sender, EventArgs e)
+        {
+            var contactos = gestion.DevolverContactosPorNombre();
+            dgvContactos.DataSource = null;
+            dgvContactos.DataSource = contactos;
+
+        }
     }
 }

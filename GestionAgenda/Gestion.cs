@@ -35,10 +35,10 @@ namespace GestionAgenda
             return agendaEntities.Contactos.ToList();
        }
 
-        public List<Contacto> DevolverContactosPorNombre(out string error)
+        public List<Contacto> DevolverContactosPorNombre()
         {
-            error = "";
             List<Contacto> todosLosContactos = DevolverTodosLosContactos();
+
             var contactosPorNombre = todosLosContactos.OrderBy(con => con.Nombre).ToList();
 
             return contactosPorNombre;
