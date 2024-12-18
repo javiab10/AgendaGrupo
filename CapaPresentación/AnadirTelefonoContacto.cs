@@ -26,7 +26,13 @@ namespace CapaPresentación
         {
             cmbContactos.Items.Clear();
             cmbContactos.Items.AddRange(gestion.DevolverTodosLosContactos().ToArray());
+            cmbContactos.DisplayMember = "Nombre";
             
+        }
+
+        private void cmbContactos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

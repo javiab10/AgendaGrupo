@@ -42,8 +42,9 @@
             this.cmbContactos.FormattingEnabled = true;
             this.cmbContactos.Location = new System.Drawing.Point(164, 17);
             this.cmbContactos.Name = "cmbContactos";
-            this.cmbContactos.Size = new System.Drawing.Size(121, 21);
+            this.cmbContactos.Size = new System.Drawing.Size(136, 21);
             this.cmbContactos.TabIndex = 0;
+            this.cmbContactos.SelectedIndexChanged += new System.EventHandler(this.cmbContactos_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -99,7 +100,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(338, 331);
+            this.ClientSize = new System.Drawing.Size(374, 367);
             this.Controls.Add(this.btnCrear);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label3);
