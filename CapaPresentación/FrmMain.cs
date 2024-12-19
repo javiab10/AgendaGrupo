@@ -45,5 +45,11 @@ namespace CapaPresentación
             dgvContactos.DataSource = contactos;
 
         }
+
+        private void agregarGrupoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmDarAltaGrupo formDarAltaGrupo = new FrmDarAltaGrupo(gestion);
+            formDarAltaGrupo.ShowDialog();
+        }
     }
 }
