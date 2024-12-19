@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace CapaPresentación
 {
@@ -37,8 +38,40 @@ namespace CapaPresentación
 
         private void btnCrear_Click(object sender, EventArgs e)
         {
-            Contacto test = cmbContactos.SelectedItem as Contacto;
-            gestion.AnadirTelefonoAContacto(txtTelefono.Text, txtDescripcion.Text, test,out string errores);
+
+            if (cmbContactos.SelectedIndex == -1)
+            {
+                MessageBox.Show("TIENES QUE ELEGIR UN CONTACTO");
+                return;
+            }
+
+            if (String.IsNullOrWhiteSpace(txtDescripcion.Text) && String.IsNullOrWhiteSpace(txtTelefono.Text))
+            {
+                MessageBox.Show("LOS CAMPOS NO PUEDEN ESTAR VACIOS");
+                return;
+            }
+
+            if (!int.TryParse(txtTelefono.Text,out int telefono))
+            {
+                MessageBox.Show("TIENE QUE SER UN TELEFONO VALIDO");
+                return;
+            }
+
+
+
+            gestion.AnadirTelefonoAContacto(txtTelefono.Text, txtDescripcion.Text, cmbContactos.SelectedItem as Contacto, out string errores);
+            if (errores == "")
+            {
+                MessageBox.Show("Se ha creado correctamente");
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show(errores);
+                txtDescripcion.Text = "";
+                txtTelefono.Text = "";
+                cmbContactos.SelectedIndex = -1;
+            }
         }
     }
 }

@@ -76,9 +76,22 @@ namespace GestionAgenda
             }
         }
 
-        public void AnadirTelefonoAContacto(string text1, string text2, Contacto test, out string errores)
+        public void AnadirTelefonoAContacto(String telefono, String descripcion, Contacto contacto, out string errores)
         {
-            throw new NotImplementedException();
+            errores = "";
+
+            try
+            {
+                agendaEntities.Telefonos.Add(new Telefono(contacto.IdContacto, telefono, descripcion, contacto));
+                agendaEntities.SaveChanges();
+            }
+            catch (Exception exc)
+            {
+
+                errores = exc.Message;
+            }
         }
+
+        
     }
 }
