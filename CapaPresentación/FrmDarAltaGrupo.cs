@@ -31,7 +31,7 @@ namespace CapaPresentación
                 return;
             }
             string resultado = gestion.AgregarGrupo(txtNombreGrupo.Text);
-            Console.WriteLine(resultado);
+            MessageBox.Show(resultado);
    
           
         }
