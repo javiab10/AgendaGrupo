@@ -53,7 +53,13 @@ namespace CapaPresentación
 
             if (!int.TryParse(txtTelefono.Text,out int telefono))
             {
-                MessageBox.Show("TIENE QUE SER UN TELEFONO VALIDO");
+                MessageBox.Show("TIENE QUE SER UN TELEFONO NUMERICO");
+                return;
+            }
+
+            if (txtTelefono.Text.Length <3)
+            {
+                MessageBox.Show("EL NUMERO DE TELEFONO TIENE QUE SER DE 3 O MAS DIGITOS");
                 return;
             }
 

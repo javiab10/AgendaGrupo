@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.Data.Entity.Core.Objects.DataClasses;
+
 namespace Entidades
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Contacto
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,16 +21,17 @@ namespace Entidades
         {
             this.Telefonos = new HashSet<Telefono>();
         }
-    
+
         public int IdContacto { get; set; }
         public string Nombre { get; set; }
         public string Email { get; set; }
         public Nullable<int> IdGrupo { get; set; }
-    
+
         public virtual Grupos Grupos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Telefono> Telefonos { get; set; }
 
+<<<<<<< Updated upstream
         //public string devuelveTelefonosEnString(ICollection<Telefono> telefonos)
         //{
         //    String stringDeTelefonos;
@@ -42,5 +45,10 @@ namespace Entidades
         //{
         //    return Email;
         //}
+=======
+
+>>>>>>> Stashed changes
     }
+
+
 }

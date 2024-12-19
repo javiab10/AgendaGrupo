@@ -30,6 +30,8 @@ namespace CapaPresentación
                 MessageBox.Show("No has introducido ningún nombre de Grupo");
                 return;
             }
+
+
             string resultado = gestion.AgregarGrupo(txtNombreGrupo.Text);
             MessageBox.Show(resultado);
    
