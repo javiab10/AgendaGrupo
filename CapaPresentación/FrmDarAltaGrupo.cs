@@ -13,8 +13,10 @@ namespace CapaPresentación
 {
     public partial class FrmDarAltaGrupo : Form
     {
-        public FrmDarAltaGrupo()
+        Gestion gestion;
+        public FrmDarAltaGrupo(Gestion gestion)
         {
+            this.gestion = gestion;
             InitializeComponent();
         }
 
@@ -22,16 +24,16 @@ namespace CapaPresentación
 
         private void btnDarAltaGrupo_Click(object sender, EventArgs e)
         {
-            Gestion repo = new Gestion(out string error);
-            if (error == "")
+            
+            if (String.IsNullOrEmpty(txtNombreGrupo.Text))
             {
-                string resultado = repo.AgregarGrupo(txtNombreGrupo.Text);
-                Console.WriteLine(resultado);
+                MessageBox.Show("No has introducido ningún nombre de Grupo");
+                return;
             }
-            else
-            {
-                Console.WriteLine(error);
-            }
+            string resultado = gestion.AgregarGrupo(txtNombreGrupo.Text);
+            Console.WriteLine(resultado);
+   
+          
         }
     }
 }
