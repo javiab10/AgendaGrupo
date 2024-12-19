@@ -33,6 +33,7 @@ namespace Entidades
 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         //public string devuelveTelefonosEnString(ICollection<Telefono> telefonos)
         //{
         //    String stringDeTelefonos;
@@ -46,6 +47,9 @@ namespace Entidades
         //{
         //    return Email;
         //}
+=======
+
+>>>>>>> Stashed changes
 =======
 
 >>>>>>> Stashed changes
