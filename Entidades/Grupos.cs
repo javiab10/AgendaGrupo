@@ -34,5 +34,10 @@ namespace Entidades
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Contacto> Contactos { get; set; }
+
+        public override string ToString()
+        {
+            return NombreGrupo;
+        }
     }
 }

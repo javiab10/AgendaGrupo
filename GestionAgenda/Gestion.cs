@@ -31,10 +31,10 @@ namespace GestionAgenda
 
         }
 
-       public List<Contacto> DevolverTodosLosContactos()
-       {
+        public List<Contacto> DevolverTodosLosContactos()
+        {
             return agendaEntities.Contactos.ToList();
-       }
+        }
 
         public List<Contacto> DevolverContactosPorNombre()
         {

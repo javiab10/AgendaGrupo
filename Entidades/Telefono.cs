@@ -32,5 +32,10 @@ namespace Entidades
         public string Descripcion { get; set; }
     
         public virtual Contacto Contacto { get; set; }
+
+        public override string ToString()
+        {
+            return Numero.ToString();
+        }
     }
 }

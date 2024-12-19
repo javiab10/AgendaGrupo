@@ -41,8 +41,19 @@ namespace CapaPresentación
         private void btnTodosContactos_Click(object sender, EventArgs e)
         {
             var contactos = gestion.DevolverContactosPorNombre();
+            var newContactos = (from contact in contactos
+                                select new
+                                {
+                                    contact.IdContacto,
+                                    contact.Nombre,
+                                    contact.Email,
+                                    NombreGrupo = contact.Grupos,
+                                    Teléfonos = String.Join(", ", contact.Telefonos)
+                                }).ToList();
+
+
             dgvContactos.DataSource = null;
-            dgvContactos.DataSource = contactos;
+            dgvContactos.DataSource = newContactos;
 
         }
 
