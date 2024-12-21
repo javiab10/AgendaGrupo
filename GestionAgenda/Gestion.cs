@@ -2,6 +2,7 @@
 using Servidores;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
@@ -92,6 +93,35 @@ namespace GestionAgenda
             }
         }
 
-        
+        public string BorrarTelefono(int idContacto, string numeroTelefono)
+        {
+            try
+            {
+                var contacto = agendaEntities.Contactos.Find(idContacto);
+
+                if (contacto == null)
+                {
+                    return $"No se encontró el contacto con ID {idContacto}.";
+                }
+
+                var telefono = contacto.Telefonos.FirstOrDefault(t => t.Numero == numeroTelefono);
+
+                if (telefono == null)
+                {
+                    return $"El contacto no tiene el teléfono {numeroTelefono}.";
+                }
+
+                contacto.Telefonos.Remove(telefono);
+                agendaEntities.SaveChanges();
+
+                return $"Teléfono {numeroTelefono} borrado correctamente del contacto {contacto.Nombre}.";
+            }
+            catch (Exception ex)
+            {
+                return $"Error al borrar el teléfono: {ex.Message}";
+            }
+        }
+
+
     }
 }
