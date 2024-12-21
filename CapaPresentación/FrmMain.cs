@@ -62,5 +62,11 @@ namespace CapaPresentación
             FrmDarAltaGrupo formDarAltaGrupo = new FrmDarAltaGrupo(gestion);
             formDarAltaGrupo.ShowDialog();
         }
+
+        private void borrarTeléfonoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmBorrarTelefono frmBorrarTelefono = new FrmBorrarTelefono(gestion);
+            frmBorrarTelefono.ShowDialog();
+        }
     }
 }
