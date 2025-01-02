@@ -32,7 +32,7 @@ namespace GestionAgenda
 
 
         }
-
+        //TODO: SOLUCIONAR ERROR DE OUTOFMEMORYEXCEPTION
         public List<Contacto> DevolverTodosLosContactos()
         {
             return agendaEntities.Contactos.ToList();
@@ -67,8 +67,10 @@ namespace GestionAgenda
                 {
                     NombreGrupo = nombreGrupo
                 };
-
+                Console.Write(nuevoGrupo.IdGrupo);
                 agendaEntities.Grupos.Add(nuevoGrupo);
+
+                // TODO : FALTA GUARDAR EN BBDD
 
                 return $"Grupo '{nombreGrupo}' añadido correctamente.";
             }
@@ -147,6 +149,32 @@ namespace GestionAgenda
             }
         }
 
+        public List<Grupos> DevolverListaGrupos() { 
+            return agendaEntities.Grupos.ToList();
+        }
+
+        public void CrearContacto(Contacto contacto,out String errores) {
+            errores = "";
+
+
+            if (contacto.IdGrupo != null && agendaEntities.Grupos.FirstOrDefault(grupo => grupo.IdGrupo == contacto.IdGrupo) == null)
+            {
+                errores = "EL GRUPO SELECCIONADO NO EXISTE";
+            }
+
+            
+
+            try
+            {
+                agendaEntities.Contactos.Add(contacto);
+                agendaEntities.SaveChanges();
+            }
+            catch (Exception)
+            {
+                errores = "HA HABIDO ALGUN PROBLEMA A LA HORA DE CREAR EL CONTACTO. POR FAVOR INTENTELO MÁS TARDE";
+            }
+            
+        }
 
     }
 }

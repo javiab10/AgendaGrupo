@@ -27,10 +27,19 @@ namespace Entidades
         public string Email { get; set; }
         public Nullable<int> IdGrupo { get; set; }
 
+
         public virtual Grupos Grupos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Telefono> Telefonos { get; set; }
 
+        public Contacto(string nombre, string email, int? idGrupo, Grupos grupos, ICollection<Telefono> telefonos)
+        {
+            Nombre = nombre;
+            Email = email;
+            IdGrupo = idGrupo;
+            Grupos = grupos;
+            Telefonos = telefonos;
+        }
 
         public string devuelveTelefonosEnString(ICollection<Telefono> telefonos)
         {

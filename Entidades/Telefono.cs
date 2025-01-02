@@ -19,6 +19,12 @@ namespace Entidades
 
         }
 
+        public Telefono(string numero, string descripcion)
+        {
+            Numero = numero;
+            Descripcion = descripcion;
+        }
+
         public Telefono(int idContacto, string numero, string descripcion, Contacto contacto)
         {
             IdContacto = idContacto;

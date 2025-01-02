@@ -53,6 +53,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmCrearContacto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCrearContacto.Designer.cs">
+      <DependentUpon>FrmCrearContacto.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmBorrarTelefono.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +90,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmBorrarTelefono.resx">
       <DependentUpon>FrmBorrarTelefono.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCrearContacto.resx">
+      <DependentUpon>FrmCrearContacto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmDarAltaGrupo.resx">
       <DependentUpon>FrmDarAltaGrupo.cs</DependentUpon>

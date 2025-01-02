@@ -68,5 +68,11 @@ namespace CapaPresentación
             FrmBorrarTelefono frmBorrarTelefono = new FrmBorrarTelefono(gestion);
             frmBorrarTelefono.ShowDialog();
         }
+
+        private void agregarContactoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmCrearContacto frmCrearContacto = new FrmCrearContacto(gestion);
+            frmCrearContacto.ShowDialog();
+        }
     }
 }

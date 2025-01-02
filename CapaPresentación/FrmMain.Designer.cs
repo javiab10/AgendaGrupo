@@ -49,49 +49,44 @@
             // 
             this.lblMensaje.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.lblMensaje.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMensaje.Location = new System.Drawing.Point(77, 34);
-            this.lblMensaje.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblMensaje.Location = new System.Drawing.Point(58, 28);
             this.lblMensaje.Name = "lblMensaje";
-            this.lblMensaje.Size = new System.Drawing.Size(905, 46);
+            this.lblMensaje.Size = new System.Drawing.Size(679, 37);
             this.lblMensaje.TabIndex = 5;
             this.lblMensaje.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // dgvContactos
             // 
             this.dgvContactos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvContactos.Location = new System.Drawing.Point(82, 96);
-            this.dgvContactos.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvContactos.Location = new System.Drawing.Point(62, 78);
             this.dgvContactos.Name = "dgvContactos";
             this.dgvContactos.RowHeadersWidth = 62;
-            this.dgvContactos.Size = new System.Drawing.Size(901, 370);
+            this.dgvContactos.Size = new System.Drawing.Size(676, 301);
             this.dgvContactos.TabIndex = 6;
             // 
             // txtNumeroTelefono
             // 
-            this.txtNumeroTelefono.Location = new System.Drawing.Point(875, 494);
-            this.txtNumeroTelefono.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNumeroTelefono.Location = new System.Drawing.Point(656, 401);
             this.txtNumeroTelefono.MaxLength = 9;
             this.txtNumeroTelefono.Name = "txtNumeroTelefono";
-            this.txtNumeroTelefono.Size = new System.Drawing.Size(86, 22);
+            this.txtNumeroTelefono.Size = new System.Drawing.Size(66, 20);
             this.txtNumeroTelefono.TabIndex = 16;
             this.txtNumeroTelefono.Text = "611111111";
             // 
             // btnContactosTelefono
             // 
-            this.btnContactosTelefono.Location = new System.Drawing.Point(637, 487);
-            this.btnContactosTelefono.Margin = new System.Windows.Forms.Padding(4);
+            this.btnContactosTelefono.Location = new System.Drawing.Point(478, 396);
             this.btnContactosTelefono.Name = "btnContactosTelefono";
-            this.btnContactosTelefono.Size = new System.Drawing.Size(190, 41);
+            this.btnContactosTelefono.Size = new System.Drawing.Size(142, 33);
             this.btnContactosTelefono.TabIndex = 15;
             this.btnContactosTelefono.Text = "Contactos de un teléfono";
             this.btnContactosTelefono.UseVisualStyleBackColor = true;
             // 
             // txtIdContacto
             // 
-            this.txtIdContacto.Location = new System.Drawing.Point(492, 494);
-            this.txtIdContacto.Margin = new System.Windows.Forms.Padding(4);
+            this.txtIdContacto.Location = new System.Drawing.Point(369, 401);
             this.txtIdContacto.Name = "txtIdContacto";
-            this.txtIdContacto.Size = new System.Drawing.Size(55, 22);
+            this.txtIdContacto.Size = new System.Drawing.Size(42, 20);
             this.txtIdContacto.TabIndex = 14;
             this.txtIdContacto.Text = "14";
             this.txtIdContacto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -99,10 +94,9 @@
             // 
             // btnTelefonosContacto
             // 
-            this.btnTelefonosContacto.Location = new System.Drawing.Point(284, 485);
-            this.btnTelefonosContacto.Margin = new System.Windows.Forms.Padding(4);
+            this.btnTelefonosContacto.Location = new System.Drawing.Point(213, 394);
             this.btnTelefonosContacto.Name = "btnTelefonosContacto";
-            this.btnTelefonosContacto.Size = new System.Drawing.Size(184, 46);
+            this.btnTelefonosContacto.Size = new System.Drawing.Size(138, 37);
             this.btnTelefonosContacto.TabIndex = 13;
             this.btnTelefonosContacto.Text = "Teléfonos de contacto";
             this.btnTelefonosContacto.UseVisualStyleBackColor = true;
@@ -110,10 +104,9 @@
             // 
             // btnTodosContactos
             // 
-            this.btnTodosContactos.Location = new System.Drawing.Point(100, 486);
-            this.btnTodosContactos.Margin = new System.Windows.Forms.Padding(4);
+            this.btnTodosContactos.Location = new System.Drawing.Point(75, 395);
             this.btnTodosContactos.Name = "btnTodosContactos";
-            this.btnTodosContactos.Size = new System.Drawing.Size(160, 41);
+            this.btnTodosContactos.Size = new System.Drawing.Size(120, 33);
             this.btnTodosContactos.TabIndex = 17;
             this.btnTodosContactos.Text = "Todos los contactos";
             this.btnTodosContactos.UseVisualStyleBackColor = true;
@@ -126,8 +119,8 @@
             this.mENUToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1067, 28);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
             this.menuStrip1.TabIndex = 18;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -139,41 +132,42 @@
             this.agregarTelefonoAContactoToolStripMenuItem,
             this.borrarTeléfonoToolStripMenuItem});
             this.mENUToolStripMenuItem.Name = "mENUToolStripMenuItem";
-            this.mENUToolStripMenuItem.Size = new System.Drawing.Size(65, 24);
+            this.mENUToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.mENUToolStripMenuItem.Text = "MENU";
             // 
             // agregarGrupoToolStripMenuItem
             // 
             this.agregarGrupoToolStripMenuItem.Name = "agregarGrupoToolStripMenuItem";
-            this.agregarGrupoToolStripMenuItem.Size = new System.Drawing.Size(286, 26);
+            this.agregarGrupoToolStripMenuItem.Size = new System.Drawing.Size(227, 22);
             this.agregarGrupoToolStripMenuItem.Text = "Agregar Grupo";
             this.agregarGrupoToolStripMenuItem.Click += new System.EventHandler(this.agregarGrupoToolStripMenuItem_Click);
             // 
             // agregarContactoToolStripMenuItem
             // 
             this.agregarContactoToolStripMenuItem.Name = "agregarContactoToolStripMenuItem";
-            this.agregarContactoToolStripMenuItem.Size = new System.Drawing.Size(286, 26);
+            this.agregarContactoToolStripMenuItem.Size = new System.Drawing.Size(227, 22);
             this.agregarContactoToolStripMenuItem.Text = "Agregar Contacto";
+            this.agregarContactoToolStripMenuItem.Click += new System.EventHandler(this.agregarContactoToolStripMenuItem_Click);
             // 
             // agregarTelefonoAContactoToolStripMenuItem
             // 
             this.agregarTelefonoAContactoToolStripMenuItem.Name = "agregarTelefonoAContactoToolStripMenuItem";
-            this.agregarTelefonoAContactoToolStripMenuItem.Size = new System.Drawing.Size(286, 26);
+            this.agregarTelefonoAContactoToolStripMenuItem.Size = new System.Drawing.Size(227, 22);
             this.agregarTelefonoAContactoToolStripMenuItem.Text = "Agregar Telefono A Contacto";
             this.agregarTelefonoAContactoToolStripMenuItem.Click += new System.EventHandler(this.agregarTelefonoAContactoToolStripMenuItem_Click);
             // 
             // borrarTeléfonoToolStripMenuItem
             // 
             this.borrarTeléfonoToolStripMenuItem.Name = "borrarTeléfonoToolStripMenuItem";
-            this.borrarTeléfonoToolStripMenuItem.Size = new System.Drawing.Size(286, 26);
+            this.borrarTeléfonoToolStripMenuItem.Size = new System.Drawing.Size(227, 22);
             this.borrarTeléfonoToolStripMenuItem.Text = "Borrar Teléfono";
             this.borrarTeléfonoToolStripMenuItem.Click += new System.EventHandler(this.borrarTeléfonoToolStripMenuItem_Click);
             // 
             // FrmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btnTodosContactos);
             this.Controls.Add(this.txtNumeroTelefono);
             this.Controls.Add(this.btnContactosTelefono);
@@ -183,7 +177,6 @@
             this.Controls.Add(this.lblMensaje);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
