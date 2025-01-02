@@ -3,6 +3,7 @@ using Servidores;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Configuration;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
@@ -14,7 +15,7 @@ namespace GestionAgenda
     {
         private AgendaEntities agendaEntities;
 
-        public Gestion(out String errores) 
+        public Gestion(out String errores)
         {
             errores = "";
             try
@@ -77,13 +78,37 @@ namespace GestionAgenda
             }
         }
 
-        public void AnadirTelefonoAContacto(String telefono, String descripcion, Contacto contacto, out string errores)
+        public void AnadirTelefonoAContacto(String telefonoStr, String descripcion, Contacto contacto, out string errores)
         {
             errores = "";
 
+            if (agendaEntities.Contactos.FirstOrDefault(contactoLista => contactoLista.IdContacto == contacto.IdContacto) == null)
+            {
+                errores = "El contacto no existe";
+                return;
+            }
+
+            if (String.IsNullOrWhiteSpace(telefonoStr) && String.IsNullOrWhiteSpace(descripcion))
+            {
+                errores = "LOS CAMPOS NO PUEDEN ESTAR VACIOS";
+                return;
+            }
+
+            if (!int.TryParse(telefonoStr, out int telefono))
+            {
+                errores = "TIENE QUE SER UN TELEFONO NUMERICO";
+                return;
+            }
+
+            if (telefonoStr.Length < 3)
+            {
+                errores = "EL NUMERO DE TELEFONO TIENE QUE SER DE 3 O MAS DIGITOS";
+                return;
+            }
+
             try
             {
-                agendaEntities.Telefonos.Add(new Telefono(contacto.IdContacto, telefono, descripcion, contacto));
+                agendaEntities.Telefonos.Add(new Telefono(contacto.IdContacto, telefonoStr, descripcion, contacto));
                 agendaEntities.SaveChanges();
             }
             catch (Exception exc)
