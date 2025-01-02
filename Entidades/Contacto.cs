@@ -31,31 +31,26 @@ namespace Entidades
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Telefono> Telefonos { get; set; }
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        //public string devuelveTelefonosEnString(ICollection<Telefono> telefonos)
-        //{
-        //    String stringDeTelefonos;
-        //    if (telefonos != null) {
-        //        foreach (Telefono telefono in telefonos) { 
-        //            stringDeTelefonos = stringDeTelefonos + telefono.ToString();
-        //        }
-        //    }
 
-        //public override string ToString()
-        //{
-        //    return Email;
-        //}
-=======
+        public string devuelveTelefonosEnString(ICollection<Telefono> telefonos)
+        {
+            String stringDeTelefonos = "";
+            if (telefonos != null)
+            {
+                foreach (Telefono telefono in telefonos)
+                {
+                    stringDeTelefonos = stringDeTelefonos + telefono.ToString();
+                }
+            }
 
->>>>>>> Stashed changes
-=======
+            return stringDeTelefonos;
+        }
 
->>>>>>> Stashed changes
-=======
+        public override string ToString()
+        {
+            return Email;
+        }
 
->>>>>>> Stashed changes
     }
 
 
