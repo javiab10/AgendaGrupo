@@ -1,4 +1,5 @@
-﻿using GestionAgenda;
+﻿using Entidades;
+using GestionAgenda;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,7 +30,34 @@ namespace CapaPresentación
 
         private void btnTelefonosContacto_Click(object sender, EventArgs e)
         {
+            List<Contacto> contactosID = new List<Contacto>();
+            if (!int.TryParse(txtIdContacto.Text, out int id))
+            {
+                MessageBox.Show("Tienes que introducir un número entero");
+                return;
+            }
 
+            var contactoID = gestion.DevolverContactoPorId(id);
+            
+            if (contactoID == null)
+            {
+                MessageBox.Show("El id de contacto " + id + " no existe.");
+            }
+
+            contactosID.Add(contactoID);
+
+            var newContactosID = (from contact in contactosID
+                                select new
+                                {
+                                    contact.IdContacto,
+                                    contact.Nombre,
+                                    contact.Email,
+                                    NombreGrupo = contact.Grupos,
+                                    Teléfonos = contact.Telefonos == null ? "" : String.Join(", ", contact.Telefonos)
+                                }).ToList();
+
+            dgvContactos.DataSource = "";
+            dgvContactos.DataSource = newContactosID;
         }
 
         private void agregarTelefonoAContactoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -48,7 +76,7 @@ namespace CapaPresentación
                                     contact.Nombre,
                                     contact.Email,
                                     NombreGrupo = contact.Grupos,
-                                    Teléfonos = String.Join(", ", contact.Telefonos)
+                                    Teléfonos = contact.Telefonos == null ? "" : String.Join(", ", contact.Telefonos)
                                 }).ToList();
 
 

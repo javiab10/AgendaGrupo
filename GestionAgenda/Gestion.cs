@@ -176,5 +176,15 @@ namespace GestionAgenda
             
         }
 
+        public Contacto DevolverContactoPorId(int id)
+        {
+            List<Contacto> contactos = DevolverTodosLosContactos();
+
+            var contactoPorId = contactos.Find(contacto => contacto.IdContacto == id);
+
+            return contactoPorId;
+        }
+
+
     }
 }
