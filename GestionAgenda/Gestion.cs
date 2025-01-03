@@ -69,6 +69,7 @@ namespace GestionAgenda
                 };
                 Console.Write(nuevoGrupo.IdGrupo);
                 agendaEntities.Grupos.Add(nuevoGrupo);
+                agendaEntities.SaveChanges();
 
                 // TODO : FALTA GUARDAR EN BBDD
 
