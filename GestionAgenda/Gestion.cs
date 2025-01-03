@@ -71,8 +71,6 @@ namespace GestionAgenda
                 agendaEntities.Grupos.Add(nuevoGrupo);
                 agendaEntities.SaveChanges();
 
-                // TODO : FALTA GUARDAR EN BBDD
-
                 return $"Grupo '{nombreGrupo}' añadido correctamente.";
             }
             catch (Exception ex)
