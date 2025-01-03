@@ -51,9 +51,9 @@ namespace CapaPresentación
                                 {
                                     contact.IdContacto,
                                     contact.Nombre,
-                                    contact.Email,
-                                    NombreGrupo = contact.Grupos,
-                                    Teléfonos = contact.Telefonos == null ? "" : String.Join(", ", contact.Telefonos)
+                                    Email = contact.Email == null || contact.Email == "" ? "..." : contact.Email,
+                                    NombreGrupo = contact.Grupos == null ? "..." : contact.Grupos.NombreGrupo,
+                                    Teléfonos = contact.Telefonos == null || contact.Telefonos.Count == 0 ? "..." : String.Join(", ", contact.Telefonos)
                                 }).ToList();
 
             dgvContactos.DataSource = "";
@@ -74,9 +74,9 @@ namespace CapaPresentación
                                 {
                                     contact.IdContacto,
                                     contact.Nombre,
-                                    contact.Email,
-                                    NombreGrupo = contact.Grupos,
-                                    Teléfonos = contact.Telefonos == null ? "" : String.Join(", ", contact.Telefonos)
+                                    Email = contact.Email == null || contact.Email == "" ? "..." : contact.Email,
+                                    NombreGrupo = contact.Grupos == null ? "..." : contact.Grupos.NombreGrupo,
+                                    Teléfonos = contact.Telefonos == null || contact.Telefonos.Count == 0 ? "..." : String.Join(", ", contact.Telefonos)
                                 }).ToList();
 
 
