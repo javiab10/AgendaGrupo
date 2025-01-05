@@ -47,7 +47,13 @@ namespace CapaPresentación
         private void FrmBorrarTelefono_Load(object sender, EventArgs e)
         {
             cbxIdContacto.Items.Clear();
-            cbxIdContacto.Items.AddRange(gestion.DevolverContactosPorNombre().ToArray());
+            var listaContactos = gestion.DevolverContactosPorNombre(out string erroresBD);
+            if (erroresBD != "")
+            {
+                MessageBox.Show(erroresBD);
+                return;
+            }   
+            cbxIdContacto.Items.AddRange(listaContactos.ToArray());
         }
 
         private void cbxIdContacto_SelectedIndexChanged(object sender, EventArgs e)

@@ -63,8 +63,14 @@ namespace CapaPresentación
                 return;
             }
 
-            var contactoID = gestion.DevolverContactoPorId(id);
-            
+            var contactoID = gestion.DevolverContactoPorId(id,out string errores);
+
+            if (errores != "")
+            {
+                MessageBox.Show(errores);
+                return;
+            }
+
             if (contactoID == null)
             {
                 MessageBox.Show("El id de contacto " + id + " no existe.");
@@ -135,7 +141,12 @@ namespace CapaPresentación
 
         private void btnTodosContactos_Click(object sender, EventArgs e)
         {
-            var contactos = gestion.DevolverContactosPorNombre();
+            var contactos = gestion.DevolverContactosPorNombre(out string erroresBD );
+            if (erroresBD != "")
+            {
+                MessageBox.Show(erroresBD);
+                return;
+            }   
             var newContactos = (from contact in contactos
                                 select new
                                 {

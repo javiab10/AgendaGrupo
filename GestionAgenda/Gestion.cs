@@ -33,20 +33,50 @@ namespace GestionAgenda
 
         }
 
-        public List<Grupos> DevolverTodosLosGrupos()
+        public List<Grupos> DevolverTodosLosGrupos(out String errores)
         {
-            return agendaEntities.Grupos.ToList();
+            errores = "";
+            try
+            {
+                return agendaEntities.Grupos.ToList();
+
+            }
+            catch (Exception exc)
+            {
+
+                errores = "HA OCURRIDO UN ERROR. INTENTELO MÁS TARDE + " +  exc.Message;
+                return null;
+            }
         }   
 
 
-        public List<Contacto> DevolverTodosLosContactos()
+        public List<Contacto> DevolverTodosLosContactos(out String errores)
         {
-            return agendaEntities.Contactos.ToList();
+            errores = "";
+            try
+            {
+                return agendaEntities.Contactos.ToList();
+
+            }
+            catch (Exception exc)
+            {
+
+                errores = "HA OCURRIDO UN ERROR. INTENTELO MÁS TARDE + " + exc.Message;
+                return null;
+            }
+
         }
 
-        public List<Contacto> DevolverContactosPorNombre()
+        public List<Contacto> DevolverContactosPorNombre(out string errores)
         {
-            List<Contacto> todosLosContactos = DevolverTodosLosContactos();
+            errores = "";
+            List<Contacto> todosLosContactos = DevolverTodosLosContactos(out string erroresBD);
+
+            if (erroresBD != "")
+            {
+                errores = erroresBD;
+                return null;
+            }   
 
             var contactosPorNombre = todosLosContactos.OrderBy(con => con.Nombre).ToList();
 
@@ -288,9 +318,16 @@ namespace GestionAgenda
             
         }
 
-        public Contacto DevolverContactoPorId(int id)
+        public Contacto DevolverContactoPorId(int id,out string errores)
         {
-            List<Contacto> contactos = DevolverTodosLosContactos();
+            errores = "";
+            List<Contacto> contactos = DevolverTodosLosContactos(out string erroresBD);
+
+            if (erroresBD != "")
+            {
+                errores = erroresBD;
+                return null;
+            }   
 
             var contactoPorId = contactos.Find(contacto => contacto.IdContacto == id);
 
