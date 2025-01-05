@@ -115,6 +115,43 @@ namespace GestionAgenda
             }
         }
 
+        public void EditarTelefono(string numTelef, string descripcion, out string errores)
+        {
+
+
+            errores = "";
+            if (String.IsNullOrWhiteSpace(numTelef))
+            {
+                errores = "EL TELEFONO NO PUEDE ESTAR VACIO";
+                return;
+            }
+            if (String.IsNullOrWhiteSpace(descripcion))
+            {
+                errores = "LA DESCRIPCIÓN NO PUEDE ESTAR VACIA";
+                return;
+            }
+
+            if (!agendaEntities.Telefonos.Any(tel => tel.Numero == numTelef))
+            {
+                errores = "ESE TELÉFONO YA EXISTE";
+                return;
+            }
+
+            Telefono telef = new Telefono();
+            telef.Numero = numTelef;
+            telef.Descripcion = descripcion;
+
+            try
+            {
+                agendaEntities.SaveChanges();
+            }
+            catch (Exception exc)
+            {
+                errores = exc.Message;
+            }
+        }
+
+
         public void BorrarGrupo(int idGrupo, out string errores) {
             errores = "";
             try
