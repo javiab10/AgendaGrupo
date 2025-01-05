@@ -67,6 +67,11 @@ namespace CapaPresentación
 
             
         }
+
+        private void cbxNumTelf_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

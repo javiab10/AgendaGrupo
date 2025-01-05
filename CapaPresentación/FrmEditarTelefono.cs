@@ -30,26 +30,34 @@ namespace CapaPresentación
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            var errores = "";
             if (cbxNumeros.SelectedIndex == -1)
             {
                 MessageBox.Show("El campo 'Numeros' no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
+            Contacto contactoSelected = cbxContactos.SelectedItem as Contacto;
             Telefono telActual = cbxNumeros.SelectedItem as Telefono;
-            gestion.EditarTelefono(txtTelefono.Text, txtDescripcion.Text, out errores);
-            if (errores != null)
+
+
+            gestion.EditarTelefono(telActual.Numero,txtTelefono.Text,contactoSelected.IdContacto,txtDescripcion.Text,out string errores);
+
+
+            if (errores != "")
             {
                 MessageBox.Show(errores, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+         
             }
             else
             {
                 MessageBox.Show("Teléfono modificado con éxito");
+                this.Close();
             }
             txtDescripcion.Text = "";
             txtTelefono.Text = "";
+            cbxContactos.SelectedIndex = -1;
             cbxNumeros.SelectedIndex = -1;
+
+
 
         }
 
@@ -59,6 +67,7 @@ namespace CapaPresentación
             if (telActual != null)
             {
                 txtTelefono.Text = telActual.Numero.ToString();
+
                 if (telActual.Descripcion != null)
                 {
                     txtDescripcion.Text = telActual.Descripcion.ToString();

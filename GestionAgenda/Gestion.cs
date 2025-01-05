@@ -156,9 +156,21 @@ namespace GestionAgenda
                 return;
             }
 
-            Telefono telef = new Telefono();
-            telef.Numero = numTelefNuevo;
-            telef.Descripcion = descripcion;
+
+            var contacto = agendaEntities.Contactos.Find(idContacto);
+
+            if (contacto == null)
+            {
+                errores = $"No se encontró el contacto con ID {idContacto}.";
+                return;
+            }
+
+            var telefono = contacto.Telefonos.FirstOrDefault(t => t.Numero == numTelefAntiguo);
+            
+            contacto.Telefonos.Remove(telefono);
+            contacto.Telefonos.Add(new Telefono(numTelefNuevo, descripcion));
+
+
 
 
             try

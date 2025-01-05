@@ -38,7 +38,7 @@
             // BtnAceptarNumTel
             // 
             this.BtnAceptarNumTel.Location = new System.Drawing.Point(136, 221);
-            this.BtnAceptarNumTel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BtnAceptarNumTel.Margin = new System.Windows.Forms.Padding(2);
             this.BtnAceptarNumTel.Name = "BtnAceptarNumTel";
             this.BtnAceptarNumTel.Size = new System.Drawing.Size(56, 19);
             this.BtnAceptarNumTel.TabIndex = 0;
@@ -70,7 +70,7 @@
             // 
             this.cbxIdContacto.FormattingEnabled = true;
             this.cbxIdContacto.Location = new System.Drawing.Point(148, 62);
-            this.cbxIdContacto.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbxIdContacto.Margin = new System.Windows.Forms.Padding(2);
             this.cbxIdContacto.Name = "cbxIdContacto";
             this.cbxIdContacto.Size = new System.Drawing.Size(92, 21);
             this.cbxIdContacto.TabIndex = 5;
@@ -80,10 +80,11 @@
             // 
             this.cbxNumTelf.FormattingEnabled = true;
             this.cbxNumTelf.Location = new System.Drawing.Point(148, 117);
-            this.cbxNumTelf.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbxNumTelf.Margin = new System.Windows.Forms.Padding(2);
             this.cbxNumTelf.Name = "cbxNumTelf";
             this.cbxNumTelf.Size = new System.Drawing.Size(92, 21);
             this.cbxNumTelf.TabIndex = 6;
+            this.cbxNumTelf.SelectedIndexChanged += new System.EventHandler(this.cbxNumTelf_SelectedIndexChanged);
             // 
             // FrmBorrarTelefono
             // 
@@ -95,7 +96,7 @@
             this.Controls.Add(this.lblNumTel);
             this.Controls.Add(this.lblIdContacto);
             this.Controls.Add(this.BtnAceptarNumTel);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmBorrarTelefono";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.FrmBorrarTelefono_Load);
