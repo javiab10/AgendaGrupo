@@ -32,7 +32,13 @@ namespace GestionAgenda
 
 
         }
-        //TODO: SOLUCIONAR ERROR DE OUTOFMEMORYEXCEPTION
+
+        public List<Grupos> DevolverTodosLosGrupos()
+        {
+            return agendaEntities.Grupos.ToList();
+        }   
+
+
         public List<Contacto> DevolverTodosLosContactos()
         {
             return agendaEntities.Contactos.ToList();
@@ -79,6 +85,57 @@ namespace GestionAgenda
             }
         }
 
+        public void EditarGrupo(int idGrupo,string nuevoNombre, out string errores) {
+
+
+            errores = "";
+            if (String.IsNullOrWhiteSpace(nuevoNombre))
+            {
+                errores = "EL NOMBRE NO PUEDE ESTAR VACIO";
+                return;
+            }
+
+            if (!agendaEntities.Grupos.Any(grp => grp.IdGrupo == idGrupo))
+            {
+                errores = "EL GRUPO NO EXISTE";
+                return;
+            }
+
+
+            var grupo = agendaEntities.Grupos.Find(idGrupo);
+            grupo.NombreGrupo = nuevoNombre;
+
+            try
+            {
+                agendaEntities.SaveChanges();
+            }
+            catch (Exception exc)
+            {
+                errores = exc.Message;
+            }
+        }
+
+        public void BorrarGrupo(int idGrupo, out string errores) {
+            errores = "";
+            try
+            {
+                Grupos grupo = agendaEntities.Grupos.Find(idGrupo);
+
+                if (grupo == null)
+                {
+                    errores = $"No se encontró el grupo con ID {idGrupo}.";
+                    return;
+                }
+
+                agendaEntities.Grupos.Remove(grupo);
+                agendaEntities.SaveChanges();
+            }
+            catch (Exception exc)
+            {
+                errores = exc.Message;
+            }
+        }
+
         public void AnadirTelefonoAContacto(String telefonoStr, String descripcion, Contacto contacto, out string errores)
         {
             errores = "";
@@ -104,6 +161,12 @@ namespace GestionAgenda
             if (telefonoStr.Length < 3)
             {
                 errores = "EL NUMERO DE TELEFONO TIENE QUE SER DE 3 O MAS DIGITOS";
+                return;
+            }
+
+            if (contacto.Telefonos.Contains(new Telefono (telefonoStr,"")))
+            {
+                errores = "EL CONTACTO YA TIENE ESE NUMERO AGENDADO";
                 return;
             }
 
@@ -222,7 +285,6 @@ namespace GestionAgenda
         public bool BorrarContacto(int idContacto, out string mensaje)
         {
             mensaje = "";
-            //bool borradoExitoso = false;
             try
             {
                 Contacto contactoABorrar = agendaEntities.Contactos.Find(idContacto);
@@ -235,7 +297,6 @@ namespace GestionAgenda
                 if (numeroAfectados > 0)
                 {
                     mensaje = $"Contacto {nombreContactoABorrar} borrado con éxito! CRIS filas affect: {numeroAfectados}";
-                    //return borradoExitoso;
                     return true;
                 }
             }
@@ -244,7 +305,6 @@ namespace GestionAgenda
                 mensaje = exc.Message;
             }
 
-            //return borradoExitoso;
             return false;
         }
     }

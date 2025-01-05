@@ -77,6 +77,7 @@ namespace CapaPresentación
 
             Contacto contactoACrear = new Contacto(txtNombre.Text, txtEmail.Text, grupoSeleccionado == null ? (int?) null : grupoSeleccionado.IdGrupo, grupoSeleccionado, lstBoxTelefonos.Items.Count == 0 ? null : lstBoxTelefonos.Items.Cast<Telefono>().ToList());
 
+
             gestion.CrearContacto(contactoACrear, out string errores);
 
             if (errores == "")

@@ -37,9 +37,10 @@
             // 
             // BtnAceptarNumTel
             // 
-            this.BtnAceptarNumTel.Location = new System.Drawing.Point(182, 272);
+            this.BtnAceptarNumTel.Location = new System.Drawing.Point(136, 221);
+            this.BtnAceptarNumTel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.BtnAceptarNumTel.Name = "BtnAceptarNumTel";
-            this.BtnAceptarNumTel.Size = new System.Drawing.Size(75, 23);
+            this.BtnAceptarNumTel.Size = new System.Drawing.Size(56, 19);
             this.BtnAceptarNumTel.TabIndex = 0;
             this.BtnAceptarNumTel.Text = "Aceptar";
             this.BtnAceptarNumTel.UseVisualStyleBackColor = true;
@@ -48,48 +49,53 @@
             // lblIdContacto
             // 
             this.lblIdContacto.AutoSize = true;
-            this.lblIdContacto.Location = new System.Drawing.Point(92, 76);
+            this.lblIdContacto.Location = new System.Drawing.Point(69, 62);
+            this.lblIdContacto.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblIdContacto.Name = "lblIdContacto";
-            this.lblIdContacto.Size = new System.Drawing.Size(74, 16);
+            this.lblIdContacto.Size = new System.Drawing.Size(50, 13);
             this.lblIdContacto.TabIndex = 1;
-            this.lblIdContacto.Text = "Id Contacto";
+            this.lblIdContacto.Text = "Contacto";
             // 
             // lblNumTel
             // 
             this.lblNumTel.AutoSize = true;
-            this.lblNumTel.Location = new System.Drawing.Point(92, 144);
+            this.lblNumTel.Location = new System.Drawing.Point(69, 117);
+            this.lblNumTel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNumTel.Name = "lblNumTel";
-            this.lblNumTel.Size = new System.Drawing.Size(61, 16);
+            this.lblNumTel.Size = new System.Drawing.Size(49, 13);
             this.lblNumTel.TabIndex = 2;
             this.lblNumTel.Text = "Teléfono";
             // 
             // cbxIdContacto
             // 
             this.cbxIdContacto.FormattingEnabled = true;
-            this.cbxIdContacto.Location = new System.Drawing.Point(197, 76);
+            this.cbxIdContacto.Location = new System.Drawing.Point(148, 62);
+            this.cbxIdContacto.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbxIdContacto.Name = "cbxIdContacto";
-            this.cbxIdContacto.Size = new System.Drawing.Size(121, 24);
+            this.cbxIdContacto.Size = new System.Drawing.Size(92, 21);
             this.cbxIdContacto.TabIndex = 5;
             this.cbxIdContacto.SelectedIndexChanged += new System.EventHandler(this.cbxIdContacto_SelectedIndexChanged);
             // 
             // cbxNumTelf
             // 
             this.cbxNumTelf.FormattingEnabled = true;
-            this.cbxNumTelf.Location = new System.Drawing.Point(197, 144);
+            this.cbxNumTelf.Location = new System.Drawing.Point(148, 117);
+            this.cbxNumTelf.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbxNumTelf.Name = "cbxNumTelf";
-            this.cbxNumTelf.Size = new System.Drawing.Size(121, 24);
+            this.cbxNumTelf.Size = new System.Drawing.Size(92, 21);
             this.cbxNumTelf.TabIndex = 6;
             // 
             // FrmBorrarTelefono
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(422, 387);
+            this.ClientSize = new System.Drawing.Size(316, 314);
             this.Controls.Add(this.cbxNumTelf);
             this.Controls.Add(this.cbxIdContacto);
             this.Controls.Add(this.lblNumTel);
             this.Controls.Add(this.lblIdContacto);
             this.Controls.Add(this.BtnAceptarNumTel);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FrmBorrarTelefono";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.FrmBorrarTelefono_Load);

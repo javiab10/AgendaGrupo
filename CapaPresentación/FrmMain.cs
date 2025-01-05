@@ -177,5 +177,11 @@ namespace CapaPresentación
             FrmCrearContacto frmCrearContacto = new FrmCrearContacto(gestion);
             frmCrearContacto.ShowDialog();
         }
+
+        private void editarGrupoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmEditarGrupo frmEditar = new FrmEditarGrupo(gestion);
+            frmEditar.ShowDialog();
+        }
     }
 }
