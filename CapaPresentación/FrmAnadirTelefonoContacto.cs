@@ -26,7 +26,13 @@ namespace CapaPresentación
         private void AnadirTelefonoContacto_Load(object sender, EventArgs e)
         {
             cmbContactos.Items.Clear();
-            cmbContactos.Items.AddRange(gestion.DevolverTodosLosContactos().ToArray());
+            var listaContactos = gestion.DevolverTodosLosContactos(out string erroresBD);
+            if (erroresBD != "")
+            {
+                MessageBox.Show(erroresBD);
+                return;
+            }
+            cmbContactos.Items.AddRange(listaContactos.ToArray());
             cmbContactos.DisplayMember = "Nombre";
             
         }
