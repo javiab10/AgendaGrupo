@@ -33,6 +33,8 @@ namespace GestionAgenda
 
         }
 
+        #region Devolver Listas Genericas
+
         public List<Grupos> DevolverTodosLosGrupos(out String errores)
         {
             errores = "";
@@ -44,11 +46,10 @@ namespace GestionAgenda
             catch (Exception exc)
             {
 
-                errores = "HA OCURRIDO UN ERROR. INTENTELO MÁS TARDE + " +  exc.Message;
+                errores = "HA OCURRIDO UN ERROR. INTENTELO MÁS TARDE + " + exc.Message;
                 return null;
             }
-        }   
-
+        }
 
         public List<Contacto> DevolverTodosLosContactos(out String errores)
         {
@@ -66,6 +67,13 @@ namespace GestionAgenda
             }
 
         }
+
+        #endregion
+
+
+        
+
+
 
         public List<Contacto> DevolverContactosPorNombre(out string errores)
         {
