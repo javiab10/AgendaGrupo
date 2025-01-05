@@ -183,5 +183,38 @@ namespace CapaPresentación
             FrmEditarGrupo frmEditar = new FrmEditarGrupo(gestion);
             frmEditar.ShowDialog();
         }
+
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnContactosTelefono_Click(object sender, EventArgs e)
+        {
+            var contactosPorTelefono = gestion.DevolverContactosPorTelefono(txtNumeroTelefono.Text,out String errores);
+            if (errores != "")
+            {
+                MessageBox.Show(errores);
+                return;
+            }
+
+            if (contactosPorTelefono == null || contactosPorTelefono.Count == 0)
+            {
+                lblMensaje.Text = ("No hay contactos con el teléfono " + txtNumeroTelefono.Text);
+                return;
+            }
+            var newContactosPorTelefono = (from contact in contactosPorTelefono
+                                           select new
+                                           {
+                                               contact.Nombre,
+                                               CantTeléfonos = contact.Telefonos.Count,
+                                               NombreGrupo = contact.Grupos == null ? "..." : contact.Grupos.NombreGrupo
+                                           }).ToList();
+
+            dgvContactos.DataSource = "";
+            dgvContactos.DataSource = newContactosPorTelefono;
+            lblMensaje.Text = "Contactos con el teléfono " + txtNumeroTelefono.Text;
+
+        }
     }
 }

@@ -263,9 +263,18 @@ namespace GestionAgenda
             if (contacto.IdGrupo != null && agendaEntities.Grupos.FirstOrDefault(grupo => grupo.IdGrupo == contacto.IdGrupo) == null)
             {
                 errores = "EL GRUPO SELECCIONADO NO EXISTE";
+                return;
             }
 
-            
+
+            if (agendaEntities.Contactos.Any(contact => contact.Nombre.Equals(contacto.Nombre,StringComparison.OrdinalIgnoreCase)))
+            {
+                errores = "YA EXISTE UN CONTACTO CON ESE NOMBRE";
+                return;
+
+            }
+
+
 
             try
             {
@@ -316,6 +325,27 @@ namespace GestionAgenda
 
             mensaje = "No existe ningún contacto con identificador '" + identificador + "'";
             return null;
+        }
+
+        public List<Contacto> DevolverContactosPorTelefono(String numeroTelefonoStr, out String errores)
+        {
+            errores = "";
+
+            if (!int.TryParse(numeroTelefonoStr, out int numeroTelefono))
+            {
+                errores = "EL NUMERO DE TELEFONO TIENE QUE SER NUMERICO";
+                return null;
+            }
+
+            if (numeroTelefonoStr.Length < 3)
+            {
+                errores = "EL NUMERO DE TELEFONO TIENE QUE SER DE 3 O MAS DIGITOS";
+                return null;
+            }
+
+
+           return agendaEntities.Contactos.Where(contacto => contacto.Telefonos.Any(telf => telf.Numero == numeroTelefonoStr)).ToList();
+
         }
 
 

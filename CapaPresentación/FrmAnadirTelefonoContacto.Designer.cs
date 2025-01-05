@@ -40,7 +40,7 @@
             // cmbContactos
             // 
             this.cmbContactos.FormattingEnabled = true;
-            this.cmbContactos.Location = new System.Drawing.Point(164, 17);
+            this.cmbContactos.Location = new System.Drawing.Point(187, 20);
             this.cmbContactos.Name = "cmbContactos";
             this.cmbContactos.Size = new System.Drawing.Size(136, 21);
             this.cmbContactos.TabIndex = 0;
@@ -49,7 +49,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 20);
+            this.label1.Location = new System.Drawing.Point(36, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(106, 13);
             this.label1.TabIndex = 1;
@@ -57,7 +57,7 @@
             // 
             // txtTelefono
             // 
-            this.txtTelefono.Location = new System.Drawing.Point(151, 83);
+            this.txtTelefono.Location = new System.Drawing.Point(174, 95);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(149, 20);
             this.txtTelefono.TabIndex = 2;
@@ -65,7 +65,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 90);
+            this.label2.Location = new System.Drawing.Point(47, 102);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(67, 13);
             this.label2.TabIndex = 3;
@@ -74,7 +74,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(24, 139);
+            this.label3.Location = new System.Drawing.Point(47, 151);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(83, 13);
             this.label3.TabIndex = 4;
@@ -82,14 +82,14 @@
             // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(151, 139);
+            this.txtDescripcion.Location = new System.Drawing.Point(174, 151);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(149, 20);
             this.txtDescripcion.TabIndex = 5;
             // 
             // btnCrear
             // 
-            this.btnCrear.Location = new System.Drawing.Point(107, 232);
+            this.btnCrear.Location = new System.Drawing.Point(148, 239);
             this.btnCrear.Name = "btnCrear";
             this.btnCrear.Size = new System.Drawing.Size(111, 20);
             this.btnCrear.TabIndex = 6;
