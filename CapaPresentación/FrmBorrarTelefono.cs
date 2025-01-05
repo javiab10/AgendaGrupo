@@ -26,7 +26,7 @@ namespace CapaPresentación
         {
             if (cbxIdContacto.SelectedIndex == -1)
             {
-                MessageBox.Show("El campo 'ID Contacto' no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("El campo 'Contacto' no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 

@@ -25,5 +25,14 @@ namespace CapaPresentación
             cbxNumeros.Items.Clear();
             cbxNumeros.Items.AddRange(gestion.DevolverListaTelefonos().ToArray());
         }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            if (cbxNumeros.SelectedIndex == -1)
+            {
+                MessageBox.Show("El campo 'ID Contacto' no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+        }
     }
 }
