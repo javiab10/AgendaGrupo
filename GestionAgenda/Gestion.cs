@@ -131,7 +131,7 @@ namespace GestionAgenda
                 return;
             }
 
-            if (!agendaEntities.Telefonos.Any(tel => tel.Numero == numTelef))
+            if (agendaEntities.Telefonos.Any(tel => tel.Numero == numTelef))
             {
                 errores = "ESE TELÉFONO YA EXISTE";
                 return;
