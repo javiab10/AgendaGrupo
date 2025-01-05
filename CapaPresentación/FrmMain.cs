@@ -227,5 +227,16 @@ namespace CapaPresentación
             lblMensaje.Text = "Contactos con el teléfono " + txtNumeroTelefono.Text;
 
         }
+
+        private void mENUToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void editarTeléfonoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmEditarTelefono frmEditarTelef = new FrmEditarTelefono(gestion);
+            frmEditarTelef.ShowDialog();
+        }
     }
 }

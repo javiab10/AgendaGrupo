@@ -35,12 +35,14 @@
             this.btnAceptar = new System.Windows.Forms.Button();
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
+            this.lblContactos = new System.Windows.Forms.Label();
+            this.cbxContactos = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // lblNumeros
             // 
             this.lblNumeros.AutoSize = true;
-            this.lblNumeros.Location = new System.Drawing.Point(100, 78);
+            this.lblNumeros.Location = new System.Drawing.Point(101, 133);
             this.lblNumeros.Name = "lblNumeros";
             this.lblNumeros.Size = new System.Drawing.Size(62, 16);
             this.lblNumeros.TabIndex = 0;
@@ -67,7 +69,7 @@
             // cbxNumeros
             // 
             this.cbxNumeros.FormattingEnabled = true;
-            this.cbxNumeros.Location = new System.Drawing.Point(211, 78);
+            this.cbxNumeros.Location = new System.Drawing.Point(211, 125);
             this.cbxNumeros.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbxNumeros.Name = "cbxNumeros";
             this.cbxNumeros.Size = new System.Drawing.Size(121, 24);
@@ -101,11 +103,31 @@
             this.txtDescripcion.Size = new System.Drawing.Size(227, 22);
             this.txtDescripcion.TabIndex = 6;
             // 
+            // lblContactos
+            // 
+            this.lblContactos.AutoSize = true;
+            this.lblContactos.Location = new System.Drawing.Point(104, 70);
+            this.lblContactos.Name = "lblContactos";
+            this.lblContactos.Size = new System.Drawing.Size(67, 16);
+            this.lblContactos.TabIndex = 7;
+            this.lblContactos.Text = "Contactos";
+            // 
+            // cbxContactos
+            // 
+            this.cbxContactos.FormattingEnabled = true;
+            this.cbxContactos.Location = new System.Drawing.Point(211, 61);
+            this.cbxContactos.Name = "cbxContactos";
+            this.cbxContactos.Size = new System.Drawing.Size(121, 24);
+            this.cbxContactos.TabIndex = 8;
+            this.cbxContactos.SelectedIndexChanged += new System.EventHandler(this.cbxContactos_SelectedIndexChanged);
+            // 
             // FrmEditarTelefono
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(488, 450);
+            this.Controls.Add(this.cbxContactos);
+            this.Controls.Add(this.lblContactos);
             this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.txtTelefono);
             this.Controls.Add(this.btnAceptar);
@@ -131,5 +153,7 @@
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.TextBox txtDescripcion;
+        private System.Windows.Forms.Label lblContactos;
+        private System.Windows.Forms.ComboBox cbxContactos;
     }
 }

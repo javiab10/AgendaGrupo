@@ -23,8 +23,9 @@ namespace CapaPresentación
 
         private void FrmEditarTelefono_Load(object sender, EventArgs e)
         {
-            cbxNumeros.Items.Clear();
-            cbxNumeros.Items.AddRange(gestion.DevolverListaTelefonos().ToArray());
+            string errores = "";
+            cbxContactos.Items.Clear();
+            cbxContactos.Items.AddRange(gestion.DevolverContactosPorNombre(out errores).ToArray());
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -46,6 +47,8 @@ namespace CapaPresentación
             {
                 MessageBox.Show("Teléfono modificado con éxito");
             }
+            txtDescripcion.Text = "";
+            txtTelefono.Text = "";
             cbxNumeros.SelectedIndex = -1;
 
         }
@@ -56,7 +59,24 @@ namespace CapaPresentación
             if (telActual != null)
             {
                 txtTelefono.Text = telActual.Numero.ToString();
-                txtDescripcion.Text = telActual.Descripcion.ToString();
+                if (telActual.Descripcion != null)
+                {
+                    txtDescripcion.Text = telActual.Descripcion.ToString();
+                }
+                else
+                {
+                    txtDescripcion.Text = "";
+                }
+                
+            }
+        }
+
+        private void cbxContactos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbxContactos.SelectedItem != null)
+            {
+                Contacto contActual = cbxContactos.SelectedItem as Contacto;
+                cbxNumeros.Items.AddRange(contActual.Telefonos.ToArray());
             }
         }
     }
