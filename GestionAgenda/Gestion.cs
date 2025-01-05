@@ -151,6 +151,10 @@ namespace GestionAgenda
         public List<Grupos> DevolverListaGrupos() { 
             return agendaEntities.Grupos.ToList();
         }
+        public List<Telefono> DevolverListaTelefonos()
+        {
+            return agendaEntities.Telefonos.ToList();
+        }
 
         public void CrearContacto(Contacto contacto,out String errores) {
             errores = "";
