@@ -28,6 +28,23 @@ namespace CapaPresentación
 
         }
 
+
+        private void dgvContactos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string mensaje = "";
+            // Verificar si el clic fue en una celda válida (no en el encabezado de columna o fila)
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                // Obtener el objeto o los datos de la fila en la que se hizo clic
+                int idSeleccionado = (int)dgvContactos.Rows[e.RowIndex].Cells["IdContacto"].Value;
+
+                FrmDatosContacto frmDatosContacto = new FrmDatosContacto(gestion.ContactoById(idSeleccionado, out mensaje), null);//La variable de salida mensaje no me va a servir para nada en este caso
+                frmDatosContacto.ShowDialog();
+            }
+
+        }
+
+
         private void btnTelefonosContacto_Click(object sender, EventArgs e)
         {
             List<Contacto> contactosID = new List<Contacto>();
@@ -58,6 +75,40 @@ namespace CapaPresentación
 
             dgvContactos.DataSource = "";
             dgvContactos.DataSource = newContactosID;
+
+            /*
+            dgvContactos.DataSource = null;
+            string mensaje;
+
+            if (int.TryParse(txtIdContacto.Text.ToString(), out int idIngresado))
+            {
+                Contacto contacto = instanciaGestion.ContactoById(idIngresado, out mensaje);
+                List<Contacto> lista = new List<Contacto> { contacto };
+
+                if (contacto != null)
+                {
+                    lblMensaje.Text = mensaje;
+
+                    var infoContacto = (from con in lista
+                                        from tel in con.Telefonos
+                                        select new
+                                        {
+                                            Numero = tel.Numero,
+                                            Descripcion = tel.Descripcion == null ? "---" : tel.Descripcion
+                                        }).ToList();
+
+                    dgvContactos.DataSource = infoContacto;
+                }
+                else
+                {
+                    lblMensaje.Text = mensaje;
+                }
+
+            }
+            else
+            {
+                lblMensaje.Text = "Ingresá un valor numérico válido.";
+            }*/
         }
 
         private void agregarTelefonoAContactoToolStripMenuItem_Click(object sender, EventArgs e)
