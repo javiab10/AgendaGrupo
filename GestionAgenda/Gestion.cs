@@ -185,5 +185,63 @@ namespace GestionAgenda
         }
 
 
+        public Contacto ContactoById(int identificador, out string mensaje)
+        {
+            mensaje = "";
+
+            try
+            {
+                Contacto contacto = agendaEntities.Contactos.Find(identificador);
+
+                if (contacto != null)
+                {
+                    if (contacto.IdGrupo == null)
+                    {
+                        mensaje = "Teléfonos del contacto: '" + contacto.Nombre + "' , no tiene grupo.";
+                        return contacto;
+                    }
+
+                    mensaje = "Teléfonos del contacto: '" + contacto.Nombre + "' del grupo: '" + contacto.Grupos.NombreGrupo + "'";
+                    return contacto;
+                }
+            }
+            catch (Exception exc)
+            {
+                mensaje = exc.Message;
+            }
+
+            mensaje = "No existe ningún contacto con identificador '" + identificador + "'";
+            return null;
+        }
+
+
+        public bool BorrarContacto(int idContacto, out string mensaje)
+        {
+            mensaje = "";
+            //bool borradoExitoso = false;
+            try
+            {
+                Contacto contactoABorrar = agendaEntities.Contactos.Find(idContacto);
+                contactoABorrar.Telefonos.Clear();
+                string nombreContactoABorrar = contactoABorrar.Nombre;
+
+                agendaEntities.Contactos.Remove(contactoABorrar);
+                int numeroAfectados = agendaEntities.SaveChanges();
+
+                if (numeroAfectados > 0)
+                {
+                    mensaje = $"Contacto {nombreContactoABorrar} borrado con éxito! CRIS filas affect: {numeroAfectados}";
+                    //return borradoExitoso;
+                    return true;
+                }
+            }
+            catch (Exception exc)
+            {
+                mensaje = exc.Message;
+            }
+
+            //return borradoExitoso;
+            return false;
+        }
     }
 }
