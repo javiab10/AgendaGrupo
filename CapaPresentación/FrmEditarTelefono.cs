@@ -1,4 +1,5 @@
-﻿using GestionAgenda;
+﻿using Entidades;
+using GestionAgenda;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,10 +29,34 @@ namespace CapaPresentación
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            var errores = "";
             if (cbxNumeros.SelectedIndex == -1)
             {
-                MessageBox.Show("El campo 'ID Contacto' no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("El campo 'Numeros' no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
+            }
+
+            Telefono telActual = cbxNumeros.SelectedItem as Telefono;
+            gestion.EditarTelefono(txtTelefono.Text, txtDescripcion.Text, out errores);
+            if (errores != null)
+            {
+                MessageBox.Show(errores, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                MessageBox.Show("Teléfono modificado con éxito");
+            }
+            cbxNumeros.SelectedIndex = -1;
+
+        }
+
+        private void cbxNumeros_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Telefono telActual = cbxNumeros.SelectedItem as Telefono;
+            if (telActual != null)
+            {
+                txtTelefono.Text = telActual.Numero.ToString();
+                txtDescripcion.Text = telActual.Descripcion.ToString();
             }
         }
     }
