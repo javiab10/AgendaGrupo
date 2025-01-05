@@ -29,7 +29,13 @@ namespace CapaPresentación
 
         private void FrmEditarGrupo_Load(object sender, EventArgs e)
         {
-            cmbSeleccionarGrupo.Items.AddRange(gestion.DevolverListaGrupos().ToArray());
+            var listaGrupos = gestion.DevolverTodosLosGrupos(out string errores);
+            if (errores !="")
+            {
+                MessageBox.Show(errores);
+                return;
+            }
+            cmbSeleccionarGrupo.Items.AddRange(listaGrupos.ToArray());
         }
 
         private void btnEditar_Click(object sender, EventArgs e)

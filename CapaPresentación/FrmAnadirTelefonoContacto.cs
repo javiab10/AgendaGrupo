@@ -16,7 +16,7 @@ namespace CapaPresentación
     public partial class FrmAnadirTelefonoContacto : Form
     {
 
-        Gestion gestion;
+        private Gestion gestion;
         public FrmAnadirTelefonoContacto(Gestion gestion)
         {
             this.gestion = gestion;
@@ -37,10 +37,6 @@ namespace CapaPresentación
             
         }
 
-        private void cmbContactos_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnCrear_Click(object sender, EventArgs e)
         {

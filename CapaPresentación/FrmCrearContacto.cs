@@ -27,7 +27,12 @@ namespace CapaPresentación
 
         private void FrmCrearContacto_Load(object sender, EventArgs e)
         {
-            cmbGrupo.Items.AddRange(gestion.DevolverListaGrupos().ToArray());
+            var listaGrupos = gestion.DevolverTodosLosGrupos(out string errores);
+            if (errores != "") {
+                MessageBox.Show(errores);
+                return;
+            }
+            cmbGrupo.Items.AddRange(listaGrupos.ToArray());
 
         }
 

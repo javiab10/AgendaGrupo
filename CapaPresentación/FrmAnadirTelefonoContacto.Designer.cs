@@ -44,7 +44,6 @@
             this.cmbContactos.Name = "cmbContactos";
             this.cmbContactos.Size = new System.Drawing.Size(136, 21);
             this.cmbContactos.TabIndex = 0;
-            this.cmbContactos.SelectedIndexChanged += new System.EventHandler(this.cmbContactos_SelectedIndexChanged);
             // 
             // label1
             // 
