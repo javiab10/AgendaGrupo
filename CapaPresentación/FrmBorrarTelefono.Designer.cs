@@ -31,8 +31,8 @@
             this.BtnAceptarNumTel = new System.Windows.Forms.Button();
             this.lblIdContacto = new System.Windows.Forms.Label();
             this.lblNumTel = new System.Windows.Forms.Label();
-            this.txtIdContacto = new System.Windows.Forms.TextBox();
-            this.txtNumTelef = new System.Windows.Forms.TextBox();
+            this.cbxIdContacto = new System.Windows.Forms.ComboBox();
+            this.cbxNumTelf = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // BtnAceptarNumTel
@@ -63,32 +63,36 @@
             this.lblNumTel.TabIndex = 2;
             this.lblNumTel.Text = "Teléfono";
             // 
-            // txtIdContacto
+            // cbxIdContacto
             // 
-            this.txtIdContacto.Location = new System.Drawing.Point(197, 76);
-            this.txtIdContacto.Name = "txtIdContacto";
-            this.txtIdContacto.Size = new System.Drawing.Size(100, 22);
-            this.txtIdContacto.TabIndex = 3;
+            this.cbxIdContacto.FormattingEnabled = true;
+            this.cbxIdContacto.Location = new System.Drawing.Point(197, 76);
+            this.cbxIdContacto.Name = "cbxIdContacto";
+            this.cbxIdContacto.Size = new System.Drawing.Size(121, 24);
+            this.cbxIdContacto.TabIndex = 5;
+            this.cbxIdContacto.SelectedIndexChanged += new System.EventHandler(this.cbxIdContacto_SelectedIndexChanged);
             // 
-            // txtNumTelef
+            // cbxNumTelf
             // 
-            this.txtNumTelef.Location = new System.Drawing.Point(197, 141);
-            this.txtNumTelef.Name = "txtNumTelef";
-            this.txtNumTelef.Size = new System.Drawing.Size(100, 22);
-            this.txtNumTelef.TabIndex = 4;
+            this.cbxNumTelf.FormattingEnabled = true;
+            this.cbxNumTelf.Location = new System.Drawing.Point(197, 144);
+            this.cbxNumTelf.Name = "cbxNumTelf";
+            this.cbxNumTelf.Size = new System.Drawing.Size(121, 24);
+            this.cbxNumTelf.TabIndex = 6;
             // 
             // FrmBorrarTelefono
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(422, 387);
-            this.Controls.Add(this.txtNumTelef);
-            this.Controls.Add(this.txtIdContacto);
+            this.Controls.Add(this.cbxNumTelf);
+            this.Controls.Add(this.cbxIdContacto);
             this.Controls.Add(this.lblNumTel);
             this.Controls.Add(this.lblIdContacto);
             this.Controls.Add(this.BtnAceptarNumTel);
             this.Name = "FrmBorrarTelefono";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.FrmBorrarTelefono_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -99,7 +103,7 @@
         private System.Windows.Forms.Button BtnAceptarNumTel;
         private System.Windows.Forms.Label lblIdContacto;
         private System.Windows.Forms.Label lblNumTel;
-        private System.Windows.Forms.TextBox txtIdContacto;
-        private System.Windows.Forms.TextBox txtNumTelef;
+        private System.Windows.Forms.ComboBox cbxIdContacto;
+        private System.Windows.Forms.ComboBox cbxNumTelf;
     }
 }

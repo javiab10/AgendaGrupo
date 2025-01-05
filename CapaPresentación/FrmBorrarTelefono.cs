@@ -1,4 +1,5 @@
-﻿using GestionAgenda;
+﻿using Entidades;
+using GestionAgenda;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,27 +24,43 @@ namespace CapaPresentación
 
         private void BtnAceptarNumTel_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtIdContacto.Text))
+            if (cbxIdContacto.SelectedIndex == -1)
             {
                 MessageBox.Show("El campo 'ID Contacto' no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(txtNumTelef.Text))
+            if (cbxNumTelf.SelectedIndex == -1)
             {
                 MessageBox.Show("El campo 'Número de Teléfono' no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (!int.TryParse(txtIdContacto.Text, out int idContacto))
-            {
-                MessageBox.Show("El 'ID Contacto' debe ser un número válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            string resultado = gestion.BorrarTelefono(idContacto, txtNumTelef.Text);
+            Contacto contActual = cbxIdContacto.SelectedItem as Contacto;
+            string resultado = gestion.BorrarTelefono(contActual.IdContacto, cbxNumTelf.SelectedItem.ToString());
 
             MessageBox.Show(resultado, "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            cbxNumTelf.SelectedIndex = -1;
+            cbxIdContacto.SelectedIndex = -1;
+        }
+
+        private void FrmBorrarTelefono_Load(object sender, EventArgs e)
+        {
+            cbxIdContacto.Items.Clear();
+            cbxIdContacto.Items.AddRange(gestion.DevolverContactosPorNombre().ToArray());
+        }
+
+        private void cbxIdContacto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbxNumTelf.Items.Clear();
+            if (cbxIdContacto.SelectedItem != null)
+            {
+                Contacto contActual = cbxIdContacto.SelectedItem as Contacto;
+                cbxNumTelf.Items.AddRange(contActual.Telefonos.ToArray());
+            }
+
+            
         }
     }
+
 }
