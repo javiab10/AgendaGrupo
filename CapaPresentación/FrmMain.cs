@@ -17,9 +17,17 @@ namespace CapaPresentación
     {
 
         Gestion gestion;
-        public FrmMain(Gestion gestion)
+        public FrmMain(Gestion gestion , String errores)
         {
+           
             this.gestion = gestion;
+
+            if (errores != "")
+            {
+                MessageBox.Show(errores);
+                return;
+            }
+
             InitializeComponent();
         }
 

@@ -57,7 +57,7 @@ namespace Entidades
 
         public override string ToString()
         {
-            return Email;
+            return Nombre;
         }
 
     }
