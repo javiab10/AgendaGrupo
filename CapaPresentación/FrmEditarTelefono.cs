@@ -25,5 +25,10 @@ namespace CapaPresentación
             cbxNumeros.Items.Clear();
             cbxNumeros.Items.AddRange(gestion.DevolverListaTelefonos().ToArray());
         }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
