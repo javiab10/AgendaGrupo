@@ -59,6 +59,7 @@ namespace CapaPresentación
             if (!int.TryParse(txtIdContacto.Text, out int id))
             {
                 MessageBox.Show("Tienes que introducir un número entero");
+                dgvContactos.DataSource = "";
                 return;
             }
 
@@ -67,6 +68,7 @@ namespace CapaPresentación
             if (contactoID == null)
             {
                 MessageBox.Show("El id de contacto " + id + " no existe.");
+                return;
             }
 
             contactosID.Add(contactoID);
@@ -81,8 +83,14 @@ namespace CapaPresentación
                                     Teléfonos = contact.Telefonos == null || contact.Telefonos.Count == 0 ? "..." : String.Join(", ", contact.Telefonos)
                                 }).ToList();
 
-            dgvContactos.DataSource = "";
-            dgvContactos.DataSource = newContactosID;
+            if(newContactosID != null)
+            {
+                lblMensaje.Text = "Tu contacto para el ID " + newContactosID[0].IdContacto;
+                dgvContactos.DataSource = "";
+                dgvContactos.DataSource = newContactosID;
+            }
+
+            
 
             /*
             dgvContactos.DataSource = null;
@@ -138,9 +146,17 @@ namespace CapaPresentación
                                     Teléfonos = contact.Telefonos == null || contact.Telefonos.Count == 0 ? "..." : String.Join(", ", contact.Telefonos)
                                 }).ToList();
 
-
-            dgvContactos.DataSource = null;
-            dgvContactos.DataSource = newContactos;
+            if(newContactos != null)
+            {
+                lblMensaje.Text = "Todos los contactos con su nombre de grupo, cantidad de teléfonos y teléfonos.";
+                dgvContactos.DataSource = "";
+                dgvContactos.DataSource = newContactos;
+            }
+            else
+            {
+                lblMensaje.Text = "No hay contactos que mostrar.";
+                dgvContactos.DataSource = "";
+            }
 
         }
 
