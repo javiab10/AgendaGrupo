@@ -55,6 +55,7 @@
   <ItemGroup>
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     <Compile Include="FrmEditarTelefono.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,12 +64,17 @@
 =======
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
     <Compile Include="FrmEditarGrupo.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmEditarGrupo.Designer.cs">
       <DependentUpon>FrmEditarGrupo.cs</DependentUpon>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -128,8 +134,13 @@
     </EmbeddedResource>
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     <EmbeddedResource Include="FrmEditarTelefono.resx">
       <DependentUpon>FrmEditarTelefono.cs</DependentUpon>
+=======
+    <EmbeddedResource Include="FrmEditarGrupo.resx">
+      <DependentUpon>FrmEditarGrupo.cs</DependentUpon>
+>>>>>>> Stashed changes
 =======
     <EmbeddedResource Include="FrmEditarGrupo.resx">
       <DependentUpon>FrmEditarGrupo.cs</DependentUpon>
