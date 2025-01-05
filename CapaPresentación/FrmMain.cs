@@ -46,7 +46,7 @@ namespace CapaPresentación
                 // Obtener el objeto o los datos de la fila en la que se hizo clic
                 int idSeleccionado = (int)dgvContactos.Rows[e.RowIndex].Cells["IdContacto"].Value;
 
-                FrmDatosContacto frmDatosContacto = new FrmDatosContacto(gestion.ContactoById(idSeleccionado, out mensaje), null);//La variable de salida mensaje no me va a servir para nada en este caso
+                FrmDatosContacto frmDatosContacto = new FrmDatosContacto(gestion.ContactoById(idSeleccionado, out mensaje), gestion);//La variable de salida mensaje no me va a servir para nada en este caso
                 frmDatosContacto.ShowDialog();
             }
 
