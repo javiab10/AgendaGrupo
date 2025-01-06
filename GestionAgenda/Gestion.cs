@@ -205,7 +205,8 @@ namespace GestionAgenda
         {
             errores = "";
 
-            if (agendaEntities.Contactos.FirstOrDefault(contactoLista => contactoLista.IdContacto == contacto.IdContacto) == null)
+
+            if (agendaEntities.Contactos.Find(contacto.IdContacto) == null)
             {
                 errores = "El contacto no existe";
                 return;

@@ -21,7 +21,7 @@ namespace CapaPresentación
             this.gestion = gestion;
             InitializeComponent();
         }
-        //TODO: HACER VALIDACION DE QUE EL USUARIO QUIERE VERDADERAMENTE BORRAR EL TELEFONO
+
         private void BtnAceptarNumTel_Click(object sender, EventArgs e)
         {
             if (cbxIdContacto.SelectedIndex == -1)
@@ -33,6 +33,13 @@ namespace CapaPresentación
             if (cbxNumTelf.SelectedIndex == -1)
             {
                 MessageBox.Show("El campo 'Número de Teléfono' no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DialogResult dialogResult = MessageBox.Show("¿Estás seguro de que quieres borrar el teléfono seleccionado?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (dialogResult == DialogResult.No)
+            {
                 return;
             }
 
