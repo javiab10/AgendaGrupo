@@ -32,21 +32,81 @@ namespace GestionAgenda
 
 
         }
-        //TODO: SOLUCIONAR ERROR DE OUTOFMEMORYEXCEPTION
-        public List<Contacto> DevolverTodosLosContactos()
+
+        #region Devolver Listas Genericas y ordenadas
+
+
+        public List<Telefono> DevolverListaTelefonos(out String errores)
         {
-            return agendaEntities.Contactos.ToList();
+            errores = "";
+            try
+            {
+                return agendaEntities.Telefonos.ToList();
+
+            }
+            catch (Exception exc)
+            {
+
+                errores = "HA OCURRIDO UN ERROR. INTENTELO MÁS TARDE + " + exc.Message;
+                return null;
+            }
+
         }
 
-        public List<Contacto> DevolverContactosPorNombre()
+        public List<Grupos> DevolverTodosLosGrupos(out String errores)
         {
-            List<Contacto> todosLosContactos = DevolverTodosLosContactos();
+            errores = "";
+            try
+            {
+                return agendaEntities.Grupos.ToList();
+
+            }
+            catch (Exception exc)
+            {
+
+                errores = "HA OCURRIDO UN ERROR. INTENTELO MÁS TARDE + " + exc.Message;
+                return null;
+            }
+        }
+
+        public List<Contacto> DevolverTodosLosContactos(out String errores)
+        {
+            errores = "";
+            try
+            {
+                return agendaEntities.Contactos.ToList();
+
+            }
+            catch (Exception exc)
+            {
+
+                errores = "HA OCURRIDO UN ERROR. INTENTELO MÁS TARDE + " + exc.Message;
+                return null;
+            }
+
+        }
+
+        public List<Contacto> DevolverContactosPorNombre(out string errores)
+        {
+            errores = "";
+            List<Contacto> todosLosContactos = DevolverTodosLosContactos(out string erroresBD);
+
+            if (erroresBD != "")
+            {
+                errores = erroresBD;
+                return null;
+            }
 
             var contactosPorNombre = todosLosContactos.OrderBy(con => con.Nombre).ToList();
 
             return contactosPorNombre;
         }
+        #endregion
 
+
+
+
+        #region Metodos relacionados con entidad Grupo
         public string AgregarGrupo(string nombreGrupo)
         {
             try
@@ -79,6 +139,65 @@ namespace GestionAgenda
             }
         }
 
+        public void EditarGrupo(int idGrupo, string nuevoNombre, out string errores)
+        {
+
+
+            errores = "";
+            if (String.IsNullOrWhiteSpace(nuevoNombre))
+            {
+                errores = "EL NOMBRE NO PUEDE ESTAR VACIO";
+                return;
+            }
+
+            if (!agendaEntities.Grupos.Any(grp => grp.IdGrupo == idGrupo))
+            {
+                errores = "EL GRUPO NO EXISTE";
+                return;
+            }
+
+
+            var grupo = agendaEntities.Grupos.Find(idGrupo);
+            grupo.NombreGrupo = nuevoNombre;
+
+            try
+            {
+                agendaEntities.SaveChanges();
+            }
+            catch (Exception exc)
+            {
+                errores = exc.Message;
+            }
+        }
+
+        public void BorrarGrupo(int idGrupo, out string errores)
+        {
+            errores = "";
+            try
+            {
+                Grupos grupo = agendaEntities.Grupos.Find(idGrupo);
+
+                if (grupo == null)
+                {
+                    errores = $"No se encontró el grupo con ID {idGrupo}.";
+                    return;
+                }
+
+                agendaEntities.Grupos.Remove(grupo);
+                agendaEntities.SaveChanges();
+            }
+            catch (Exception exc)
+            {
+                errores = exc.Message;
+            }
+        }
+        #endregion
+
+
+
+
+        #region Metodos relacionados con entidad Telefono
+
         public void AnadirTelefonoAContacto(String telefonoStr, String descripcion, Contacto contacto, out string errores)
         {
             errores = "";
@@ -104,6 +223,12 @@ namespace GestionAgenda
             if (telefonoStr.Length < 3)
             {
                 errores = "EL NUMERO DE TELEFONO TIENE QUE SER DE 3 O MAS DIGITOS";
+                return;
+            }
+
+            if (contacto.Telefonos.Contains(new Telefono(telefonoStr, "")))
+            {
+                errores = "EL CONTACTO YA TIENE ESE NUMERO AGENDADO";
                 return;
             }
 
@@ -148,20 +273,72 @@ namespace GestionAgenda
             }
         }
 
-        public List<Grupos> DevolverListaGrupos() { 
-            return agendaEntities.Grupos.ToList();
+        public void EditarTelefono(string numTelefAntiguo, string numTelefNuevo, int idContacto, string descripcion, out string errores)
+        {
+
+
+            errores = "";
+            if (String.IsNullOrWhiteSpace(numTelefNuevo))
+            {
+                errores = "EL TELEFONO NO PUEDE ESTAR VACIO";
+                return;
+            }
+
+
+            var contacto = agendaEntities.Contactos.Find(idContacto);
+
+            if (contacto == null)
+            {
+                errores = $"No se encontró el contacto con ID {idContacto}.";
+                return;
+            }
+
+            var telefono = contacto.Telefonos.FirstOrDefault(t => t.Numero == numTelefAntiguo);
+
+            contacto.Telefonos.Remove(telefono);
+            contacto.Telefonos.Add(new Telefono(numTelefNuevo, descripcion));
+
+
+
+
+            try
+            {
+                agendaEntities.SaveChanges();
+            }
+            catch (Exception exc)
+            {
+                errores = exc.Message;
+            }
         }
 
-        public void CrearContacto(Contacto contacto,out String errores) {
+
+        #endregion
+
+
+
+
+        #region Metodos relacionados con entidad Contacto
+
+        public void CrearContacto(Contacto contacto, out String errores)
+        {
             errores = "";
 
 
             if (contacto.IdGrupo != null && agendaEntities.Grupos.FirstOrDefault(grupo => grupo.IdGrupo == contacto.IdGrupo) == null)
             {
                 errores = "EL GRUPO SELECCIONADO NO EXISTE";
+                return;
             }
 
-            
+
+            if (agendaEntities.Contactos.Any(contact => contact.Nombre.Equals(contacto.Nombre, StringComparison.OrdinalIgnoreCase)))
+            {
+                errores = "YA EXISTE UN CONTACTO CON ESE NOMBRE";
+                return;
+
+            }
+
+
 
             try
             {
@@ -172,12 +349,19 @@ namespace GestionAgenda
             {
                 errores = "HA HABIDO ALGUN PROBLEMA A LA HORA DE CREAR EL CONTACTO. POR FAVOR INTENTELO MÁS TARDE";
             }
-            
+
         }
 
-        public Contacto DevolverContactoPorId(int id)
+        public Contacto DevolverContactoPorId(int id, out string errores)
         {
-            List<Contacto> contactos = DevolverTodosLosContactos();
+            errores = "";
+            List<Contacto> contactos = DevolverTodosLosContactos(out string erroresBD);
+
+            if (erroresBD != "")
+            {
+                errores = erroresBD;
+                return null;
+            }
 
             var contactoPorId = contactos.Find(contacto => contacto.IdContacto == id);
 
@@ -214,11 +398,31 @@ namespace GestionAgenda
             return null;
         }
 
+        public List<Contacto> DevolverContactosPorTelefono(String numeroTelefonoStr, out String errores)
+        {
+            errores = "";
+
+            if (!int.TryParse(numeroTelefonoStr, out int numeroTelefono))
+            {
+                errores = "EL NUMERO DE TELEFONO TIENE QUE SER NUMERICO";
+                return null;
+            }
+
+            if (numeroTelefonoStr.Length < 3)
+            {
+                errores = "EL NUMERO DE TELEFONO TIENE QUE SER DE 3 O MAS DIGITOS";
+                return null;
+            }
+
+
+            return agendaEntities.Contactos.Where(contacto => contacto.Telefonos.Any(telf => telf.Numero == numeroTelefonoStr)).ToList();
+
+        }
+
 
         public bool BorrarContacto(int idContacto, out string mensaje)
         {
             mensaje = "";
-            //bool borradoExitoso = false;
             try
             {
                 Contacto contactoABorrar = agendaEntities.Contactos.Find(idContacto);
@@ -231,7 +435,6 @@ namespace GestionAgenda
                 if (numeroAfectados > 0)
                 {
                     mensaje = $"Contacto {nombreContactoABorrar} borrado con éxito! CRIS filas affect: {numeroAfectados}";
-                    //return borradoExitoso;
                     return true;
                 }
             }
@@ -240,8 +443,16 @@ namespace GestionAgenda
                 mensaje = exc.Message;
             }
 
-            //return borradoExitoso;
             return false;
         }
+
+
+        #endregion
+
+
+
+
+
+
     }
 }

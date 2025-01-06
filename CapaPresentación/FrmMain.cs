@@ -59,14 +59,22 @@ namespace CapaPresentación
             if (!int.TryParse(txtIdContacto.Text, out int id))
             {
                 MessageBox.Show("Tienes que introducir un número entero");
+                dgvContactos.DataSource = "";
                 return;
             }
 
-            var contactoID = gestion.DevolverContactoPorId(id);
-            
+            var contactoID = gestion.DevolverContactoPorId(id,out string errores);
+
+            if (errores != "")
+            {
+                MessageBox.Show(errores);
+                return;
+            }
+
             if (contactoID == null)
             {
                 MessageBox.Show("El id de contacto " + id + " no existe.");
+                return;
             }
 
             contactosID.Add(contactoID);
@@ -81,8 +89,14 @@ namespace CapaPresentación
                                     Teléfonos = contact.Telefonos == null || contact.Telefonos.Count == 0 ? "..." : String.Join(", ", contact.Telefonos)
                                 }).ToList();
 
-            dgvContactos.DataSource = "";
-            dgvContactos.DataSource = newContactosID;
+            if(newContactosID != null)
+            {
+                lblMensaje.Text = "Tu contacto para el ID " + newContactosID[0].IdContacto;
+                dgvContactos.DataSource = "";
+                dgvContactos.DataSource = newContactosID;
+            }
+
+            
 
             /*
             dgvContactos.DataSource = null;
@@ -127,7 +141,12 @@ namespace CapaPresentación
 
         private void btnTodosContactos_Click(object sender, EventArgs e)
         {
-            var contactos = gestion.DevolverContactosPorNombre();
+            var contactos = gestion.DevolverContactosPorNombre(out string erroresBD );
+            if (erroresBD != "")
+            {
+                MessageBox.Show(erroresBD);
+                return;
+            }   
             var newContactos = (from contact in contactos
                                 select new
                                 {
@@ -138,9 +157,17 @@ namespace CapaPresentación
                                     Teléfonos = contact.Telefonos == null || contact.Telefonos.Count == 0 ? "..." : String.Join(", ", contact.Telefonos)
                                 }).ToList();
 
-
-            dgvContactos.DataSource = null;
-            dgvContactos.DataSource = newContactos;
+            if(newContactos != null)
+            {
+                lblMensaje.Text = "Todos los contactos con su nombre de grupo, cantidad de teléfonos y teléfonos.";
+                dgvContactos.DataSource = "";
+                dgvContactos.DataSource = newContactos;
+            }
+            else
+            {
+                lblMensaje.Text = "No hay contactos que mostrar.";
+                dgvContactos.DataSource = "";
+            }
 
         }
 
@@ -160,6 +187,56 @@ namespace CapaPresentación
         {
             FrmCrearContacto frmCrearContacto = new FrmCrearContacto(gestion);
             frmCrearContacto.ShowDialog();
+        }
+
+        private void editarGrupoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmEditarGrupo frmEditar = new FrmEditarGrupo(gestion);
+            frmEditar.ShowDialog();
+        }
+
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnContactosTelefono_Click(object sender, EventArgs e)
+        {
+            var contactosPorTelefono = gestion.DevolverContactosPorTelefono(txtNumeroTelefono.Text,out String errores);
+            if (errores != "")
+            {
+                MessageBox.Show(errores);
+                return;
+            }
+
+            if (contactosPorTelefono == null || contactosPorTelefono.Count == 0)
+            {
+                lblMensaje.Text = ("No hay contactos con el teléfono " + txtNumeroTelefono.Text);
+                return;
+            }
+            var newContactosPorTelefono = (from contact in contactosPorTelefono
+                                           select new
+                                           {
+                                               contact.Nombre,
+                                               CantTeléfonos = contact.Telefonos.Count,
+                                               NombreGrupo = contact.Grupos == null ? "..." : contact.Grupos.NombreGrupo
+                                           }).ToList();
+
+            dgvContactos.DataSource = "";
+            dgvContactos.DataSource = newContactosPorTelefono;
+            lblMensaje.Text = "Contactos con el teléfono " + txtNumeroTelefono.Text;
+
+        }
+
+        private void mENUToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void editarTeléfonoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmEditarTelefono frmEditarTelef = new FrmEditarTelefono(gestion);
+            frmEditarTelef.ShowDialog();
         }
     }
 }

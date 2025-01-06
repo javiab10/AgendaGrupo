@@ -16,7 +16,7 @@ namespace CapaPresentación
     public partial class FrmAnadirTelefonoContacto : Form
     {
 
-        Gestion gestion;
+        private Gestion gestion;
         public FrmAnadirTelefonoContacto(Gestion gestion)
         {
             this.gestion = gestion;
@@ -26,15 +26,17 @@ namespace CapaPresentación
         private void AnadirTelefonoContacto_Load(object sender, EventArgs e)
         {
             cmbContactos.Items.Clear();
-            cmbContactos.Items.AddRange(gestion.DevolverTodosLosContactos().ToArray());
+            var listaContactos = gestion.DevolverTodosLosContactos(out string erroresBD);
+            if (erroresBD != "")
+            {
+                MessageBox.Show(erroresBD);
+                return;
+            }
+            cmbContactos.Items.AddRange(listaContactos.ToArray());
             cmbContactos.DisplayMember = "Nombre";
             
         }
 
-        private void cmbContactos_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnCrear_Click(object sender, EventArgs e)
         {

@@ -38,9 +38,11 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.mENUToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.agregarGrupoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editarGrupoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.agregarContactoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.agregarTelefonoAContactoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.borrarTeléfonoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editarTeléfonoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvContactos)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -86,6 +88,7 @@
             this.btnContactosTelefono.TabIndex = 15;
             this.btnContactosTelefono.Text = "Contactos de un teléfono";
             this.btnContactosTelefono.UseVisualStyleBackColor = true;
+            this.btnContactosTelefono.Click += new System.EventHandler(this.btnContactosTelefono_Click);
             // 
             // txtIdContacto
             // 
@@ -138,10 +141,13 @@
             this.agregarGrupoToolStripMenuItem,
             this.agregarContactoToolStripMenuItem,
             this.agregarTelefonoAContactoToolStripMenuItem,
+            this.editarGrupoToolStripMenuItem,
+            this.editarTeléfonoToolStripMenuItem,
             this.borrarTeléfonoToolStripMenuItem});
             this.mENUToolStripMenuItem.Name = "mENUToolStripMenuItem";
             this.mENUToolStripMenuItem.Size = new System.Drawing.Size(65, 24);
             this.mENUToolStripMenuItem.Text = "MENU";
+            this.mENUToolStripMenuItem.Click += new System.EventHandler(this.mENUToolStripMenuItem_Click);
             // 
             // agregarGrupoToolStripMenuItem
             // 
@@ -149,6 +155,13 @@
             this.agregarGrupoToolStripMenuItem.Size = new System.Drawing.Size(286, 26);
             this.agregarGrupoToolStripMenuItem.Text = "Agregar Grupo";
             this.agregarGrupoToolStripMenuItem.Click += new System.EventHandler(this.agregarGrupoToolStripMenuItem_Click);
+            // 
+            // editarGrupoToolStripMenuItem
+            // 
+            this.editarGrupoToolStripMenuItem.Name = "editarGrupoToolStripMenuItem";
+            this.editarGrupoToolStripMenuItem.Size = new System.Drawing.Size(286, 26);
+            this.editarGrupoToolStripMenuItem.Text = "Editar Grupo";
+            this.editarGrupoToolStripMenuItem.Click += new System.EventHandler(this.editarGrupoToolStripMenuItem_Click);
             // 
             // agregarContactoToolStripMenuItem
             // 
@@ -161,7 +174,7 @@
             // 
             this.agregarTelefonoAContactoToolStripMenuItem.Name = "agregarTelefonoAContactoToolStripMenuItem";
             this.agregarTelefonoAContactoToolStripMenuItem.Size = new System.Drawing.Size(286, 26);
-            this.agregarTelefonoAContactoToolStripMenuItem.Text = "Agregar Telefono A Contacto";
+            this.agregarTelefonoAContactoToolStripMenuItem.Text = "Agregar Teléfono A Contacto";
             this.agregarTelefonoAContactoToolStripMenuItem.Click += new System.EventHandler(this.agregarTelefonoAContactoToolStripMenuItem_Click);
             // 
             // borrarTeléfonoToolStripMenuItem
@@ -170,6 +183,13 @@
             this.borrarTeléfonoToolStripMenuItem.Size = new System.Drawing.Size(286, 26);
             this.borrarTeléfonoToolStripMenuItem.Text = "Borrar Teléfono";
             this.borrarTeléfonoToolStripMenuItem.Click += new System.EventHandler(this.borrarTeléfonoToolStripMenuItem_Click);
+            // 
+            // editarTeléfonoToolStripMenuItem
+            // 
+            this.editarTeléfonoToolStripMenuItem.Name = "editarTeléfonoToolStripMenuItem";
+            this.editarTeléfonoToolStripMenuItem.Size = new System.Drawing.Size(286, 26);
+            this.editarTeléfonoToolStripMenuItem.Text = "Editar Teléfono";
+            this.editarTeléfonoToolStripMenuItem.Click += new System.EventHandler(this.editarTeléfonoToolStripMenuItem_Click);
             // 
             // FrmMain
             // 
@@ -189,6 +209,7 @@
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.FrmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvContactos)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -212,6 +233,8 @@
         private System.Windows.Forms.ToolStripMenuItem agregarContactoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem agregarTelefonoAContactoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem borrarTeléfonoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editarGrupoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editarTeléfonoToolStripMenuItem;
     }
 }
 

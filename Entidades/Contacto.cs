@@ -41,19 +41,7 @@ namespace Entidades
             Telefonos = telefonos;
         }
 
-        public string devuelveTelefonosEnString(ICollection<Telefono> telefonos)
-        {
-            String stringDeTelefonos = "";
-            if (telefonos != null)
-            {
-                foreach (Telefono telefono in telefonos)
-                {
-                    stringDeTelefonos = stringDeTelefonos + telefono.ToString();
-                }
-            }
-
-            return stringDeTelefonos;
-        }
+ 
 
         public override string ToString()
         {

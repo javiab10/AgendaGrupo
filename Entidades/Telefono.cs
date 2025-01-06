@@ -12,7 +12,7 @@ namespace Entidades
     using System;
     using System.Collections.Generic;
     
-    public partial class Telefono
+    public partial class Telefono : IEquatable<Telefono>
     {
         public Telefono()
         {
@@ -39,9 +39,35 @@ namespace Entidades
     
         public virtual Contacto Contacto { get; set; }
 
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Telefono);
+        }
+
+        public bool Equals(Telefono other)
+        {
+            return !(other is null) &&
+                   Numero == other.Numero;
+        }
+
+        public override int GetHashCode()
+        {
+            return -1449941195 + EqualityComparer<string>.Default.GetHashCode(Numero);
+        }
+
         public override string ToString()
         {
             return Numero.ToString();
+        }
+
+        public static bool operator ==(Telefono left, Telefono right)
+        {
+            return EqualityComparer<Telefono>.Default.Equals(left, right);
+        }
+
+        public static bool operator !=(Telefono left, Telefono right)
+        {
+            return !(left == right);
         }
     }
 }
