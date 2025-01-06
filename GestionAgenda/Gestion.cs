@@ -470,12 +470,21 @@ namespace GestionAgenda
                 contactoAModificar.Telefonos = contactoActualizado.Telefonos;
             }
 
-            int numeroAfectados = agendaEntities.SaveChanges();
-
-            if (numeroAfectados > 0)
+            try
             {
-                return true;
+                int numeroAfectados = agendaEntities.SaveChanges();
+
+                if (numeroAfectados > 0)
+                {
+                    return true;
+                }
             }
+            catch (Exception exc) {
+                return false;
+            }
+
+
+            
 
             return false;
         }

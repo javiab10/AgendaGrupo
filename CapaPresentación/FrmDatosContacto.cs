@@ -132,12 +132,12 @@ namespace CapaPresentación
             }
 
             contactoRecibido.Nombre = txtNombre.Text;
-            contactoRecibido.Email = (string)(String.IsNullOrWhiteSpace(txtEmail.Text) ? (object)DBNull.Value : txtEmail.Text);
+            contactoRecibido.Email = txtEmail.Text == ""? null: txtEmail.Text;
 
             contactoRecibido.Telefonos.Clear();
-            Telefono nuevoTelefono = new Telefono();
             foreach (Control control in this.Controls)
             {
+                Telefono nuevoTelefono = new Telefono();
                 if (control is TextBox txtTel)
                 {
 
