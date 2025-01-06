@@ -217,6 +217,7 @@ namespace CapaPresentación
             var newContactosPorTelefono = (from contact in contactosPorTelefono
                                            select new
                                            {
+                                               IdContacto = contact.IdContacto,
                                                contact.Nombre,
                                                CantTeléfonos = contact.Telefonos.Count,
                                                NombreGrupo = contact.Grupos == null ? "..." : contact.Grupos.NombreGrupo
@@ -224,6 +225,7 @@ namespace CapaPresentación
 
             dgvContactos.DataSource = "";
             dgvContactos.DataSource = newContactosPorTelefono;
+            dgvContactos.Columns["IdContacto"].Visible = false;
             lblMensaje.Text = "Contactos con el teléfono " + txtNumeroTelefono.Text;
 
         }

@@ -434,7 +434,7 @@ namespace GestionAgenda
 
                 if (numeroAfectados > 0)
                 {
-                    mensaje = $"Contacto {nombreContactoABorrar} borrado con éxito! CRIS filas affect: {numeroAfectados}";
+                    mensaje = $"Contacto {nombreContactoABorrar} borrado con éxito!";
                     return true;
                 }
             }
@@ -442,6 +442,13 @@ namespace GestionAgenda
             {
                 mensaje = exc.Message;
             }
+
+            return false;
+        }
+
+        public bool MofidicarContacto(Contacto contacto)
+        {
+
 
             return false;
         }
