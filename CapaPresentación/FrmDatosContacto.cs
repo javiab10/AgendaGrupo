@@ -30,13 +30,12 @@ namespace CapaPresentación
             txtEmail.Text = contacto.Email;
             txtNombreGrupo.Text = contacto.Grupos == null ? "" : contacto.Grupos.NombreGrupo;
 
+
             int xLabel = 210;
             int yLabel = 140;
 
             int xValor = 315;
             int yValor = 140;
-
-            int idCadaTelefono = 1;
 
             if (contacto.Telefonos != null && contacto.Telefonos.Any())
             {
@@ -48,9 +47,8 @@ namespace CapaPresentación
                     this.Controls.Add(lblNumero);
 
                     TextBox txtNumeroTel = new TextBox();
-                    txtNumeroTel.Name = $"numeroTel{idCadaTelefono}";
+                    txtNumeroTel.Name = $"numeroTel";
                     txtNumeroTel.Text = cadaTelefono.Numero;
-                    //txtNumeroTel.Size = new Size(93, 23);
                     txtNumeroTel.ReadOnly = true;
                     txtNumeroTel.BorderStyle = BorderStyle.None;
                     txtNumeroTel.BackColor = Color.Orange;
@@ -62,7 +60,7 @@ namespace CapaPresentación
                     btnEliminarTelefono.Location = new Point(xValor + 110, yValor - 1);
                     btnEliminarTelefono.Width = 130;
                     btnEliminarTelefono.Text = "Eliminar este teléfono";
-                    btnEliminarTelefono.Click += (sender, e) => gestion.BorrarTelefono(contactoRecibido.IdContacto, cadaTelefono.Numero);//TODO 
+                    btnEliminarTelefono.Click += (sender, e) => btnEliminarTelefono_Click(contactoRecibido.IdContacto, cadaTelefono.Numero);
                     this.Controls.Add(btnEliminarTelefono);
 
                     Label lblNumeroDesc = new Label();
@@ -71,16 +69,13 @@ namespace CapaPresentación
                     this.Controls.Add(lblNumeroDesc);
 
                     TextBox txtNumeroDescTel = new TextBox();
-                    txtNumeroDescTel.Name = $"descripcionTel{idCadaTelefono}";
+                    txtNumeroDescTel.Name = $"descripcionTel";
                     txtNumeroDescTel.Text = cadaTelefono.Descripcion;
-                    //txtNumeroDescTel.Size = new Size(93, 23);
                     txtNumeroDescTel.ReadOnly = true;
                     txtNumeroDescTel.BorderStyle = BorderStyle.None;
                     txtNumeroDescTel.BackColor = Color.Orange;
                     txtNumeroDescTel.Location = new Point(xValor, yValor += 30);
                     this.Controls.Add(txtNumeroDescTel);
-
-                    idCadaTelefono++;
                 }
             }
         }
@@ -104,6 +99,7 @@ namespace CapaPresentación
 
         private void btnModificarContacto_Click(object sender, EventArgs e)
         {
+
             foreach (Control control in this.Controls)
             {
                 if (control is TextBox textBox)
@@ -119,12 +115,13 @@ namespace CapaPresentación
             }
 
             btnModificarContacto.Click -= btnModificarContacto_Click;
-            btnModificarContacto.Text = "Modificar";
+            btnModificarContacto.Text = "Guardar";
             btnModificarContacto.Click += btnModificar_Click;
         }
 
         public void btnModificar_Click(object sender, EventArgs e)
         {
+
             if (String.IsNullOrWhiteSpace(txtNombre.Text))
             {
                 MessageBox.Show("El campo nombre no puede estar vacío.");
@@ -133,8 +130,10 @@ namespace CapaPresentación
 
             contactoRecibido.Nombre = txtNombre.Text;
             contactoRecibido.Email = txtEmail.Text == ""? null: txtEmail.Text;
-            Telefono nuevoTelefono = new Telefono();
-           contactoRecibido.Telefonos.Clear();
+            
+
+            Telefono telefonoActualizado = new Telefono();
+            contactoRecibido.Telefonos.Clear();
             foreach (Control control in this.Controls)
             {
                 if (control is TextBox txtTel)
@@ -142,13 +141,13 @@ namespace CapaPresentación
 
                     if (txtTel.Name.StartsWith("numeroTel"))
                     {
-                        nuevoTelefono = new Telefono();
-                        nuevoTelefono.Numero = txtTel.Text;
+                        telefonoActualizado = new Telefono();
+                        telefonoActualizado.Numero = txtTel.Text;
                     }
                     else if (txtTel.Name.StartsWith("descripcionTel"))
                     {
-                        nuevoTelefono.Descripcion = txtTel.Text;
-                        contactoRecibido.Telefonos.Add(nuevoTelefono);
+                        telefonoActualizado.Descripcion = txtTel.Text;
+                        contactoRecibido.Telefonos.Add(telefonoActualizado);
                     }
 
                 }
@@ -157,6 +156,7 @@ namespace CapaPresentación
             if (gestion.MofidicarContacto(contactoRecibido) == true)
             {
                 MessageBox.Show("Contacto modificado con éxito!");
+                Close();
             }
             else
             {
@@ -168,7 +168,12 @@ namespace CapaPresentación
 
         public void btnEliminarTelefono_Click(int idContacto, string numeroTelefono)
         {
+            DialogResult avisoEliminarResultado = MessageBox.Show("¿Estás seguro de que quieres borrar este teléfono?", "", MessageBoxButtons.OKCancel);
 
+            if (avisoEliminarResultado == DialogResult.OK)
+            {
+                MessageBox.Show(gestion.BorrarTelefono(idContacto, numeroTelefono));
+            }
         }
 
 

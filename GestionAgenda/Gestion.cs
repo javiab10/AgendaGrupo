@@ -143,8 +143,6 @@ namespace GestionAgenda
 
         public void EditarGrupo(int idGrupo, string nuevoNombre, out string errores)
         {
-
-
             errores = "";
             if (String.IsNullOrWhiteSpace(nuevoNombre))
             {
@@ -463,13 +461,12 @@ namespace GestionAgenda
         {
             Contacto contactoAModificar = agendaEntities.Contactos.Find(contactoActualizado.IdContacto);
 
-
-
             if (contactoAModificar != null)
             {
                 contactoAModificar.Nombre = contactoActualizado.Nombre;
                 contactoAModificar.Email = contactoActualizado.Email;
-                //contactoAModificar.Telefonos = contactoActualizado.Telefonos;
+                contactoAModificar.Grupos.IdGrupo = contactoActualizado.Grupos.IdGrupo;
+                contactoAModificar.Telefonos = contactoActualizado.Telefonos;
             }
 
             try
