@@ -133,16 +133,16 @@ namespace CapaPresentación
 
             contactoRecibido.Nombre = txtNombre.Text;
             contactoRecibido.Email = txtEmail.Text == ""? null: txtEmail.Text;
-
-            contactoRecibido.Telefonos.Clear();
+            Telefono nuevoTelefono = new Telefono();
+           contactoRecibido.Telefonos.Clear();
             foreach (Control control in this.Controls)
             {
-                Telefono nuevoTelefono = new Telefono();
                 if (control is TextBox txtTel)
                 {
 
                     if (txtTel.Name.StartsWith("numeroTel"))
                     {
+                        nuevoTelefono = new Telefono();
                         nuevoTelefono.Numero = txtTel.Text;
                     }
                     else if (txtTel.Name.StartsWith("descripcionTel"))

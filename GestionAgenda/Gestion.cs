@@ -463,11 +463,13 @@ namespace GestionAgenda
         {
             Contacto contactoAModificar = agendaEntities.Contactos.Find(contactoActualizado.IdContacto);
 
+
+
             if (contactoAModificar != null)
             {
                 contactoAModificar.Nombre = contactoActualizado.Nombre;
                 contactoAModificar.Email = contactoActualizado.Email;
-                contactoAModificar.Telefonos = contactoActualizado.Telefonos;
+                //contactoAModificar.Telefonos = contactoActualizado.Telefonos;
             }
 
             try
