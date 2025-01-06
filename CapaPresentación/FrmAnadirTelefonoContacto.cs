@@ -47,9 +47,9 @@ namespace CapaPresentación
                 return;
             }
 
-            if (String.IsNullOrWhiteSpace(txtDescripcion.Text) && String.IsNullOrWhiteSpace(txtTelefono.Text))
+            if (String.IsNullOrWhiteSpace(txtTelefono.Text))
             {
-                MessageBox.Show("LOS CAMPOS NO PUEDEN ESTAR VACIOS");
+                MessageBox.Show("TIENES QUE INTRODUCIR UN NUMERO");
                 return;
             }
 
@@ -61,7 +61,7 @@ namespace CapaPresentación
 
             if (txtTelefono.Text.Length <3)
             {
-                MessageBox.Show("EL NUMERO DE TELEFONO TIENE QUE SER DE 3 O MAS DIGITOS");
+                MessageBox.Show("EL NUMERO DE TELEFONO TIENE QUE SER DE 3 O MÁS DIGITOS");
                 return;
             }
 

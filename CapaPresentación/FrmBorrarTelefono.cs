@@ -21,7 +21,7 @@ namespace CapaPresentación
             this.gestion = gestion;
             InitializeComponent();
         }
-
+        //TODO: HACER VALIDACION DE QUE EL USUARIO QUIERE VERDADERAMENTE BORRAR EL TELEFONO
         private void BtnAceptarNumTel_Click(object sender, EventArgs e)
         {
             if (cbxIdContacto.SelectedIndex == -1)
