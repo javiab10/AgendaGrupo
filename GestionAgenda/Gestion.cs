@@ -459,9 +459,23 @@ namespace GestionAgenda
             return false;
         }
 
-        public bool MofidicarContacto(Contacto contacto)
+        public bool MofidicarContacto(Contacto contactoActualizado)
         {
+            Contacto contactoAModificar = agendaEntities.Contactos.Find(contactoActualizado.IdContacto);
 
+            if (contactoAModificar != null)
+            {
+                contactoAModificar.Nombre = contactoActualizado.Nombre;
+                contactoAModificar.Email = contactoActualizado.Email;
+                contactoAModificar.Telefonos = contactoActualizado.Telefonos;
+            }
+
+            int numeroAfectados = agendaEntities.SaveChanges();
+
+            if (numeroAfectados > 0)
+            {
+                return true;
+            }
 
             return false;
         }
