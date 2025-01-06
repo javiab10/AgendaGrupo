@@ -18,8 +18,8 @@ namespace CapaPresentación
 {
     public partial class FrmDatosContacto : Form
     {
-        Contacto contactoRecibido;
-        Gestion gestion;
+        private Contacto contactoRecibido;
+        private Gestion gestion;
         public FrmDatosContacto(Contacto contacto, Gestion gestion)
         {
             InitializeComponent();
@@ -82,7 +82,7 @@ namespace CapaPresentación
 
         private void btnEliminarContaco_Click(object sender, EventArgs e)
         {
-            string mensaje = "";//Vuelvo a inicializar esta variable como vacia porque en el caso de dar a cancel del messagebox, me imprimira el valor de mensaje que salio de la funcion ContactosAlfPorNombre
+            string mensaje = "";
 
             DialogResult avisoEliminarResultado = MessageBox.Show($"Estas seguro de eliminar este contacto?", "", MessageBoxButtons.OKCancel);
 
@@ -90,8 +90,9 @@ namespace CapaPresentación
             {
                 gestion.BorrarContacto(contactoRecibido.IdContacto, out mensaje);
                 MessageBox.Show(mensaje);
+                this.Close();
             }
-            else if (!String.IsNullOrWhiteSpace(mensaje))//TODO creo que esta mal
+            else if (!String.IsNullOrWhiteSpace(mensaje))
             {
                 MessageBox.Show(mensaje);
             }
@@ -108,7 +109,7 @@ namespace CapaPresentación
                     textBox.BorderStyle = BorderStyle.Fixed3D;
                 }
 
-                if (control is Button button && button.Visible == false)//TODO no es si es buena practica
+                if (control is Button button && button.Visible == false)
                 {
                     button.Visible = true;
                 }
@@ -156,7 +157,7 @@ namespace CapaPresentación
             if (gestion.MofidicarContacto(contactoRecibido) == true)
             {
                 MessageBox.Show("Contacto modificado con éxito!");
-                Close();
+                this.Close();
             }
             else
             {
@@ -173,10 +174,8 @@ namespace CapaPresentación
             if (avisoEliminarResultado == DialogResult.OK)
             {
                 MessageBox.Show(gestion.BorrarTelefono(idContacto, numeroTelefono));
+                this.Close();
             }
         }
-
-
-
     }
 }

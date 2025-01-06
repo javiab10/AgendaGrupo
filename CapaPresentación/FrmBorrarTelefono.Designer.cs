@@ -98,6 +98,7 @@
             this.Controls.Add(this.BtnAceptarNumTel);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmBorrarTelefono";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.FrmBorrarTelefono_Load);
             this.ResumeLayout(false);

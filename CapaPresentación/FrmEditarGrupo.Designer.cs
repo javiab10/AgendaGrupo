@@ -102,6 +102,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmbSeleccionarGrupo);
             this.Name = "FrmEditarGrupo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.FrmEditarGrupo_Load);
             this.ResumeLayout(false);

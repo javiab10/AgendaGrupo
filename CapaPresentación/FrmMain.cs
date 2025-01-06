@@ -40,15 +40,13 @@ namespace CapaPresentación
         private void dgvContactos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             string mensaje = "";
-            // Verificar si el clic fue en una celda válida (no en el encabezado de columna o fila)
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
-                // Obtener el objeto o los datos de la fila en la que se hizo clic
                 int idSeleccionado = (int)dgvContactos.Rows[e.RowIndex].Cells["IdContacto"].Value;
 
-                FrmDatosContacto frmDatosContacto = new FrmDatosContacto(gestion.ContactoById(idSeleccionado, out mensaje), gestion);//La variable de salida mensaje no me va a servir para nada en este caso
+                FrmDatosContacto frmDatosContacto = new FrmDatosContacto(gestion.ContactoById(idSeleccionado, out mensaje), gestion);
                 
-                frmDatosContacto.FormClosed += btnTodosContactos_Click;//Recarga los datos del dgvContactos cuando el frmDatosContactos se cierra
+                frmDatosContacto.FormClosed += btnTodosContactos_Click;
                 frmDatosContacto.ShowDialog();
             }
 
@@ -168,6 +166,8 @@ namespace CapaPresentación
 
         private void btnContactosTelefono_Click(object sender, EventArgs e)
         {
+            dgvContactos.DataSource = "";
+
             var contactosPorTelefono = gestion.DevolverContactosPorTelefono(txtNumeroTelefono.Text,out String errores);
             if (errores != "")
             {
@@ -189,7 +189,6 @@ namespace CapaPresentación
                                                NombreGrupo = contact.Grupos == null ? "..." : contact.Grupos.NombreGrupo
                                            }).ToList();
 
-            dgvContactos.DataSource = "";
             dgvContactos.DataSource = newContactosPorTelefono;
             dgvContactos.Columns["IdContacto"].Visible = false;
             lblMensaje.Text = "Contactos con el teléfono " + txtNumeroTelefono.Text;
