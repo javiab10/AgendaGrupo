@@ -326,6 +326,12 @@ namespace GestionAgenda
         {
             errores = "";
 
+            if(contacto.Nombre == null || contacto.Nombre == "")
+            {
+                errores = "EL CONTACTO DEBE TENER UN NOMBRE VÁLIDO";
+                return;
+            }
+
 
             if (contacto.IdGrupo != null && agendaEntities.Grupos.FirstOrDefault(grupo => grupo.IdGrupo == contacto.IdGrupo) == null)
             {
@@ -341,6 +347,11 @@ namespace GestionAgenda
 
             }
 
+            if (contacto.Telefonos != null && contacto.Telefonos.GroupBy(t => t.Numero).Any(g => g.Count() > 1))
+            {
+                errores = "LA LISTA DE TELÉFONOS DEL CONTACTO CONTIENE NÚMEROS DUPLICADOS";
+                return;
+            }
 
             try
             {
