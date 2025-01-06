@@ -32,10 +32,19 @@ namespace CapaPresentación
             }
 
 
-            string resultado = gestion.AgregarGrupo(txtNombreGrupo.Text);
+            string resultado = gestion.AgregarGrupo(txtNombreGrupo.Text,out bool errores);
             MessageBox.Show(resultado);
-   
-          
+
+            if (errores)
+            {
+                this.Close();
+            }
+            else
+            {
+                txtNombreGrupo.Text = "";
+            }
+
+
         }
     }
 }

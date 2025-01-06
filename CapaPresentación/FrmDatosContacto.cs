@@ -76,10 +76,7 @@ namespace CapaPresentación
                 gestion.BorrarContacto(idContacto, out mensaje);
                 MessageBox.Show(mensaje);
             }
-            else if (!String.IsNullOrWhiteSpace(mensaje))
-            {
-                MessageBox.Show(mensaje);
-            }
+           
         }
 
         private void btnModificarContacto_Click(object sender, EventArgs e)

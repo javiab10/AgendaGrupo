@@ -107,8 +107,9 @@ namespace GestionAgenda
 
 
         #region Metodos relacionados con entidad Grupo
-        public string AgregarGrupo(string nombreGrupo)
+        public string AgregarGrupo(string nombreGrupo,out bool errores)
         {
+            errores = false;
             try
             {
                 if (string.IsNullOrWhiteSpace(nombreGrupo))
@@ -127,11 +128,12 @@ namespace GestionAgenda
                 {
                     NombreGrupo = nombreGrupo
                 };
-                Console.Write(nuevoGrupo.IdGrupo);
                 agendaEntities.Grupos.Add(nuevoGrupo);
                 agendaEntities.SaveChanges();
 
+                errores = true;
                 return $"Grupo '{nombreGrupo}' añadido correctamente.";
+                
             }
             catch (Exception ex)
             {
