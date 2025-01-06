@@ -73,7 +73,7 @@ namespace CapaPresentación
 
             if (contactoID == null)
             {
-                MessageBox.Show("El id de contacto " + id + " no existe.");
+                MessageBox.Show("No existe ningún contacto con identificador '" + id + "'");
                 return;
             }
 
@@ -91,7 +91,7 @@ namespace CapaPresentación
 
             if(newContactosID != null)
             {
-                lblMensaje.Text = "Tu contacto para el ID " + newContactosID[0].IdContacto;
+                lblMensaje.Text = "Telefonos del contacto: '" + newContactosID[0].Nombre + "' del grupo: '"+ newContactosID[0].NombreGrupo + "'";
                 dgvContactos.DataSource = "";
                 dgvContactos.DataSource = newContactosID;
             }

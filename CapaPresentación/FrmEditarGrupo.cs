@@ -78,6 +78,11 @@ namespace CapaPresentación
                 return;
             }   
 
+            DialogResult dialogResult = MessageBox.Show("¿Estás seguro de que quieres borrar el grupo seleccionado?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.No) {
+                return;
+            }
+
             var grupo = (Grupos)cmbSeleccionarGrupo.SelectedItem;
             gestion.BorrarGrupo(grupo.IdGrupo, out string errores);
 

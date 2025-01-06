@@ -200,7 +200,6 @@ namespace GestionAgenda
 
         #region Metodos relacionados con entidad Telefono
 
-        //TODO : EN VEZ DE PASAR EL CONTACTO, PASAR EL ID DEL CONTACTO
         public void AnadirTelefonoAContacto(String telefonoStr, String descripcion, Contacto contacto, out string errores)
         {
             errores = "";
