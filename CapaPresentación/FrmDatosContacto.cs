@@ -9,30 +9,36 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using Button = System.Windows.Forms.Button;
+using TextBox = System.Windows.Forms.TextBox;
 
 namespace CapaPresentación
 {
     public partial class FrmDatosContacto : Form
     {
-        private int idContacto;
+        Contacto contactoRecibido;
         Gestion gestion;
         public FrmDatosContacto(Contacto contacto, Gestion gestion)
         {
             InitializeComponent();
             this.gestion = gestion;
+            this.contactoRecibido = contacto;
 
-            idContacto = contacto.IdContacto;
-            lblTextNombre.Text = contacto.Nombre;
-            lblTextEmail.Text = contacto.Email;
-            lblTextNombreGrupo.Text = contacto.Grupos == null ? "" : contacto.Grupos.NombreGrupo;
+            txtNombre.Text = contacto.Nombre;
+            txtEmail.Text = contacto.Email;
+            txtNombreGrupo.Text = contacto.Grupos == null ? "" : contacto.Grupos.NombreGrupo;
 
             int xLabel = 210;
-            int yLabel = 130;
+            int yLabel = 140;
 
-            int xValor = 322;
-            int yValor = 130;
+            int xValor = 315;
+            int yValor = 140;
 
-            if(contacto.Telefonos != null && contacto.Telefonos.Any())
+            int idCadaTelefono = 1;
+
+            if (contacto.Telefonos != null && contacto.Telefonos.Any())
             {
                 foreach (Telefono cadaTelefono in contacto.Telefonos)
                 {
@@ -41,26 +47,40 @@ namespace CapaPresentación
                     lblNumero.Location = new Point(xLabel, yLabel += 30);
                     this.Controls.Add(lblNumero);
 
-                    Label lblTextNumero = new Label();
-                    lblTextNumero.Text = cadaTelefono.Numero;
-                    lblTextNumero.Size = new Size(93, 23);
-                    lblTextNumero.TextAlign = ContentAlignment.MiddleLeft;
-                    lblTextNumero.BackColor = Color.Orange;
-                    lblTextNumero.Location = new Point(xValor, yValor += 30);
-                    this.Controls.Add(lblTextNumero);
+                    TextBox txtNumeroTel = new TextBox();
+                    txtNumeroTel.Name = $"numeroTel{idCadaTelefono}";
+                    txtNumeroTel.Text = cadaTelefono.Numero;
+                    //txtNumeroTel.Size = new Size(93, 23);
+                    txtNumeroTel.ReadOnly = true;
+                    txtNumeroTel.BorderStyle = BorderStyle.None;
+                    txtNumeroTel.BackColor = Color.Orange;
+                    txtNumeroTel.Location = new Point(xValor, yValor += 30);
+                    this.Controls.Add(txtNumeroTel);
+
+                    Button btnEliminarTelefono = new Button();
+                    btnEliminarTelefono.Visible = false;
+                    btnEliminarTelefono.Location = new Point(xValor + 110, yValor - 1);
+                    btnEliminarTelefono.Width = 130;
+                    btnEliminarTelefono.Text = "Eliminar este teléfono";
+                    btnEliminarTelefono.Click += (sender, e) => gestion.BorrarTelefono(contactoRecibido.IdContacto, cadaTelefono.Numero);//TODO 
+                    this.Controls.Add(btnEliminarTelefono);
 
                     Label lblNumeroDesc = new Label();
                     lblNumeroDesc.Text = "Descripción:";
                     lblNumeroDesc.Location = new Point(xLabel, yLabel += 30);
                     this.Controls.Add(lblNumeroDesc);
 
-                    Label lblTextNumeroDesc = new Label();
-                    lblTextNumeroDesc.Text = cadaTelefono.Descripcion;
-                    lblTextNumeroDesc.Size = new Size(93, 23);
-                    lblTextNumeroDesc.TextAlign = ContentAlignment.MiddleLeft;
-                    lblTextNumeroDesc.BackColor = Color.Orange;
-                    lblTextNumeroDesc.Location = new Point(xValor, yValor += 30);
-                    this.Controls.Add(lblTextNumeroDesc);
+                    TextBox txtNumeroDescTel = new TextBox();
+                    txtNumeroDescTel.Name = $"descripcionTel{idCadaTelefono}";
+                    txtNumeroDescTel.Text = cadaTelefono.Descripcion;
+                    //txtNumeroDescTel.Size = new Size(93, 23);
+                    txtNumeroDescTel.ReadOnly = true;
+                    txtNumeroDescTel.BorderStyle = BorderStyle.None;
+                    txtNumeroDescTel.BackColor = Color.Orange;
+                    txtNumeroDescTel.Location = new Point(xValor, yValor += 30);
+                    this.Controls.Add(txtNumeroDescTel);
+
+                    idCadaTelefono++;
                 }
             }
         }
@@ -73,15 +93,85 @@ namespace CapaPresentación
 
             if (avisoEliminarResultado == DialogResult.OK)
             {
-                gestion.BorrarContacto(idContacto, out mensaje);
+                gestion.BorrarContacto(contactoRecibido.IdContacto, out mensaje);
                 MessageBox.Show(mensaje);
             }
-           
+            else if (!String.IsNullOrWhiteSpace(mensaje))//TODO creo que esta mal
+            {
+                MessageBox.Show(mensaje);
+            }
         }
 
         private void btnModificarContacto_Click(object sender, EventArgs e)
         {
+            foreach (Control control in this.Controls)
+            {
+                if (control is TextBox textBox)
+                {
+                    textBox.ReadOnly = false;
+                    textBox.BorderStyle = BorderStyle.Fixed3D;
+                }
+
+                if (control is Button button && button.Visible == false)//TODO no es si es buena practica
+                {
+                    button.Visible = true;
+                }
+            }
+
+            btnModificarContacto.Click -= btnModificarContacto_Click;
+            btnModificarContacto.Text = "Modificar";
+            btnModificarContacto.Click += btnModificar_Click;
+        }
+
+        public void btnModificar_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrWhiteSpace(txtNombre.Text))
+            {
+                MessageBox.Show("El campo nombre no puede estar vacío.");
+                return;
+            }
+
+            contactoRecibido.Nombre = txtNombre.Text;
+            contactoRecibido.Email = (string)(String.IsNullOrWhiteSpace(txtEmail.Text) ? (object)DBNull.Value : txtEmail.Text);
+
+            contactoRecibido.Telefonos.Clear();
+            Telefono nuevoTelefono = new Telefono();
+            foreach (Control control in this.Controls)
+            {
+                if (control is TextBox txtTel)
+                {
+
+                    if (txtTel.Name.StartsWith("numeroTel"))
+                    {
+                        nuevoTelefono.Numero = txtTel.Text;
+                    }
+                    else if (txtTel.Name.StartsWith("descripcionTel"))
+                    {
+                        nuevoTelefono.Descripcion = txtTel.Text;
+                        contactoRecibido.Telefonos.Add(nuevoTelefono);
+                    }
+
+                }
+            }
+
+            if (gestion.MofidicarContacto(contactoRecibido) == true)
+            {
+                MessageBox.Show("Contacto modificado con éxito!");
+            }
+            else
+            {
+                MessageBox.Show("Hubo un error.");
+            }
 
         }
+
+
+        public void btnEliminarTelefono_Click(int idContacto, string numeroTelefono)
+        {
+
+        }
+
+
+
     }
 }
